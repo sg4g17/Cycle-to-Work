@@ -13,6 +13,10 @@ https://data.bls.gov/pdq/SurveyOutputServlet
 => USA Unemployment Rates
 * UsaUnempolymentRate.xlsx
 
+https://www.coindesk.com/price/
+=> bitcoin to USD
+* coindesk-bpi-USD-close_data-2010-07-18_2017-12-04.csv
+
 
 Source Unkonw.... Please update :-)
 API_SP.POP.TOTL_DS2_en_csv_v2.csv
