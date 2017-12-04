@@ -23,3 +23,19 @@ API_SP.POP.TOTL_DS2_en_csv_v2.csv
 Metadata_Country_API_SP.POP.TOTL_DS2_en_csv_v2.csv
 Metadata_Indicator_API_SP.POP.TOTL_DS2_en_csv_v2.csv
 series-011217.csv
+
+https://data.worldbank.org/indicator/NE.EXP.GNFS.ZS
+=>Exports of goods and services (% of GDP)
+*Exports of goods and services (% of GDP).zip 
+API_NE.EXP.GNFS.ZS_DS2_en_csv_v2.csv
+
+https://data.worldbank.org/indicator/NE.IMP.GNFS.ZS
+=>Imports of goods and services (% of GDP)
+*Imports of goods and services (% of GDP).zip 
+API_NE.IMP.GNFS.ZS_DS2_en_csv_v2.csv
+
+https://data.worldbank.org/indicator/NY.GDP.PCAP.KD.ZG
+=>GDP per capita growth (annual %)
+*GDPcapita growth .zip
+API_NY.GDP.PCAP.KD.ZG_DS2_en_csv_v2.csv
+
