@@ -1,3 +1,75 @@
 <!doctype html>
-<title>Currancy Analysis</title>
-<h1>the App</h1>
+
+<head>
+    <meta charset="utf-8">
+    <!-- You need these lines if you ARE using a Node server -->
+    <title>Currancy Analysis</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!--
+    <script src="../static/results.js"></script>
+    -->
+</head>
+
+<body>
+
+    <script>
+        // var resultsPanel = $('#results-panel');
+
+        function validateSelection(comp) {
+            sel1 = $('#cur1').find(':selected').val();
+            sel2 = $('#cur2').find(':selected').val();
+            $('#goBtn').prop("disabled", sel1 === sel2);
+        }
+
+        function genOutput() {
+            alert('you pressed go');
+        }
+    </script>
+
+
+    <h1>G20 Currancy Analysis</h1>
+    <p>Please select two different currancys</p>
+    <select id="cur1" onchange=validateSelection(this)>
+        <option value="ARG">Argentina Peso</option>
+        <option value="AUD">Australia Dollar</option>
+        <option value="BRL">Brazil Real</option>
+        <option value="CAD">Canada Dollar</option>
+        <option value="CNY">China Yuan Renminbi</option>
+        <option value="EUR">Euro Member Countries</option>
+        <option value="GBP">United Kingdom Pound</option>
+        <option value="IDR">Indonesia Rupiah</option>
+        <option value="INR">India Rupee</option>
+        <option value="JPY">Japan Yen</option>
+        <option value="KRW">Korea (South) Won</option>
+        <option value="MEX">Mexico Peso</option>
+        <option value="RUB">Russia Ruble</option>
+        <option value="SAR">Saudi Arabia Riyal</option>
+        <option value="TRY">Turkey Lira</option>
+        <option value="USD">United States Dollar</option>
+        <option value="ZAR">South Africa Rand</option>
+    </select>
+
+    <select id="cur2" onchange=validateSelection(this)>
+        <option value="ARG">Argentina Peso</option>
+        <option value="AUD">Australia Dollar</option>
+        <option value="BRL">Brazil Real</option>
+        <option value="CAD">Canada Dollar</option>
+        <option value="CNY">China Yuan Renminbi</option>
+        <option value="EUR">Euro Member Countries</option>
+        <option value="GBP">United Kingdom Pound</option>
+        <option value="IDR">Indonesia Rupiah</option>
+        <option value="INR">India Rupee</option>
+        <option value="JPY">Japan Yen</option>
+        <option value="KRW">Korea (South) Won</option>
+        <option value="MEX">Mexico Peso</option>
+        <option value="RUB">Russia Ruble</option>
+        <option value="SAR">Saudi Arabia Riyal</option>
+        <option value="TRY">Turkey Lira</option>
+        <option value="USD">United States Dollar</option>
+        <option value="ZAR">South Africa Rand</option>
+    </select>
+
+    <button id="goBtn" type="button" onclick=genOutput() disabled=true>Go!</button>
+    <div id="results-panel"></div>
+
+</body>
