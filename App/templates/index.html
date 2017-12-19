@@ -22,7 +22,9 @@
         }
 
         function genOutput() {
-            alert('you pressed go');
+            sel1 = $('#cur1').find(':selected').val();
+            sel2 = $('#cur2').find(':selected').val();
+            alert('you pressed go' + sel1 + ' - ' + sel2);
         }
     </script>
 
