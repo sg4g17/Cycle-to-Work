@@ -116,3 +116,13 @@
   year={2000},
   publisher={BMJ Group}
 }
+@article{rossi2013exchange,
+  title={Exchange rate predictability},
+  author={Rossi, Barbara},
+  journal={Journal of economic literature},
+  volume={51},
+  number={4},
+  pages={1063--1119},
+  year={2013},
+  publisher={American Economic Association}
+}
