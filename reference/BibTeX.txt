@@ -106,3 +106,13 @@
   year={2005},
   publisher={The University of Chicago Press}
 }
+@article{lock2000health,
+  title={Health impact assessment},
+  author={Lock, Karen},
+  journal={BMJ: British Medical Journal},
+  volume={320},
+  number={7246},
+  pages={1395},
+  year={2000},
+  publisher={BMJ Group}
+}
