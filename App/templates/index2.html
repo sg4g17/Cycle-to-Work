@@ -151,7 +151,81 @@
 
 <body>
     <script>
-        // var resultsPanel = $('#results-panel');
+        var missing = {};
+
+        function findStrongestCor() {
+            d3.csv("static/matrixFormatted.csv", function(exdata) {
+                d3.csv("static/all_data.csv", function(data) {
+                    curCodes = ["ARS", "AUD", "BRL", "CAD", "CNY", "EUR", "GBP", "IDR", "INR", "JPY", "KRW", "MXN", "RUB", "SAR", "TRY", "USD", "ZAR"]
+                    allCor = {};
+                    for (var sel1 of curCodes) {
+                        for (var sel2 of curCodes) {
+                            if (sel1 === sel2) continue;
+
+                            var targetLabel = sel1 + "-" + sel2;
+                            // console.log(targetLabel);
+                            var targetEx = aggregateExchangeDataForTarget(exdata, targetLabel);
+                            var graphData = [];
+                            var years = [];
+                            var cor = calcCorrCoef(sel1, sel2, data, targetEx, targetLabel, graphData, years);
+                            for (var iL in cor) {
+                                var label = targetLabel + "_" + iL;
+                                allCor[label] = cor[iL];
+                            }
+                        }
+                    }
+
+                    // debug logging
+                    if (Object.keys(missing).length > 0) {
+                        console.log("missing columns");
+                        console.log(missing);
+                    }
+                    //console.log(allCor);
+
+                    var sortedCorkeys = Object.keys(allCor).sort(function(key1, key2) {
+                        // looking for the value that is closest to eith 1 or -1
+                        // there for take the abs subtrack from 1 and find value cloest to 0
+                        let v1 = 1.0 - Math.abs(allCor[key1]);
+                        let v2 = 1.0 - Math.abs(allCor[key2]);
+
+                        // we want reverse order (i.e. strongest orelation first)
+                        // return a positive value if v1 is greater than v2
+                        return v1 - v2;
+                    });
+
+                    // print list to page
+                    for (i = 0; i < sortedCorkeys.length; i++) {
+                        var key = sortedCorkeys[i];
+                        var label = prretyLabel(key) + " = " + allCor[key].toFixed(2);
+                        var node = document.createElement("LI");
+                        var textnode = document.createTextNode(label);
+                        node.appendChild(textnode);
+                        document.getElementById("print-panel").appendChild(node);
+                    }
+                });
+            });
+        }
+
+        function prretyLabel(codeLabel) {
+            var split1 = codeLabel.split("_");
+            var exLabel = split1[0];
+            var split2 = split1[1].split("-");
+            var curCode = split2[0];
+            var indCode = split2[1];
+
+            var indicators = {
+                "population": "Population",
+                "employment": "Employment",
+                "import": "Imports",
+                "foreigntrade": "Foreign Trade",
+                "GDP": "GDP",
+                "InflationGDPdeflator": "Inflation GDP Deflator",
+                "Inflationconsumerprices": "Inflation Consumer Prices",
+                "interestrate": "Interest Rate",
+            };
+
+            return exLabel + " with " + curCode + " " + indicators[indCode];
+        }
 
         function validateSelection(comp) {
             sel1 = $('#cur1').find(':selected').val();
@@ -174,7 +248,7 @@
 
                 d3.csv("static/all_data.csv", function(data) {
                     // normalise the data
-                    normaliseLowFreqData(data);
+                    // normaliseLowFreqData(data);
 
                     // calc corralation coeffient
                     var graphData = [];
@@ -290,7 +364,7 @@
                 .attr("y", padding)
                 .attr("dy", ".71em")
                 .text(function(d) {
-                    var title = d.x + "\n" + top4CorVal[d.x].toFixed(1);
+                    var title = d.x + "\n" + top4CorVal[d.x].toFixed(2);
                     return title;
                 });
 
@@ -432,11 +506,11 @@
                 "population",
                 "employment",
                 "import",
-                "foreign trade",
+                "foreigntrade",
                 "GDP",
-                "Inflation GDP deflator ",
-                "Inflation consumer prices",
-                "interest rate"
+                "InflationGDPdeflator",
+                "Inflationconsumerprices",
+                "interestrate"
             ];
 
             var indicatorLabels = [];
@@ -454,6 +528,7 @@
             var xIndex = 0;
             var indicatorVals = [];
             //extract data of interest
+
             for (var dIndex = 0; dIndex < data.length; dIndex++) {
                 // skip till we find start of data we are interested in
                 var dYear = data[dIndex]['Year'];
@@ -467,8 +542,16 @@
                     if (xIndex === 0) {
                         indicatorVals.push([]);
                     }
-
-                    indicatorVals[i].push(data[dIndex][iL]);
+                    var indicatorVal = +data[dIndex][iL];
+                    if (indicatorVal === NaN || indicatorVal === undefined) {
+                        //console.log(iL + " " + dYear);
+                        if (missing.hasOwnProperty(iL)) {
+                            missing[iL] += 1;
+                        } else {
+                            missing[iL] = 1;
+                        }
+                    }
+                    indicatorVals[i].push(indicatorVal);
                 }
                 xIndex++;
             }
@@ -544,48 +627,57 @@
     <h1>G20 Currency Analysis</h1>
     <h1>Economic Indicators</h1>
     <a href="index.html">Exchange Rates</a>
+
+    <p><button id="findBtn" type="button" onclick=findStrongestCor()>Find Strongest Correlation!</button></p>
+    <p>
+        <div id="print-panel"></div>
+    </p>
+
     <p>Please select two different currencys</p>
-    <select id="cur1" onchange=validateSelection(this)>
-        <option value="ARS">Argentina Peso</option>
-        <option value="AUD">Australia Dollar</option>
-        <option value="BRL">Brazil Real</option>
-        <option value="CAD">Canada Dollar</option>
-        <option value="CNY">China Yuan Renminbi</option>
-        <option value="EUR">Euro Member Countries</option>
-        <option value="GBP">United Kingdom Pound</option>
-        <option value="IDR">Indonesia Rupiah</option>
-        <option value="INR">India Rupee</option>
-        <option value="JPY">Japan Yen</option>
-        <option value="KRW">Korea (South) Won</option>
-        <option value="MEX">Mexico Peso</option>
-        <option value="RUB">Russia Ruble</option>
-        <option value="SAR">Saudi Arabia Riyal</option>
-        <option value="TRY">Turkey Lira</option>
-        <option value="USD">United States Dollar</option>
-        <option value="ZAR">South Africa Rand</option>
-    </select>
+    <p>
+        <select id="cur1" onchange=validateSelection(this)>
+            <option value="ARS">Argentina Peso</option>
+            <option value="AUD">Australia Dollar</option>
+            <option value="BRL">Brazil Real</option>
+            <option value="CAD">Canada Dollar</option>
+            <option value="CNY">China Yuan Renminbi</option>
+            <option value="EUR">Euro Member Countries</option>
+            <option value="GBP">United Kingdom Pound</option>
+            <option value="IDR">Indonesia Rupiah</option>
+            <option value="INR">India Rupee</option>
+            <option value="JPY">Japan Yen</option>
+            <option value="KRW">Korea (South) Won</option>
+            <option value="MXN">Mexico Peso</option>
+            <option value="RUB">Russia Ruble</option>
+            <option value="SAR">Saudi Arabia Riyal</option>
+            <option value="TRY">Turkey Lira</option>
+            <option value="USD">United States Dollar</option>
+            <option value="ZAR">South Africa Rand</option>
+        </select>
 
-    <select id="cur2" onchange=validateSelection(this)>
-        <option value="ARS">Argentina Peso</option>
-        <option value="AUD">Australia Dollar</option>
-        <option value="BRL">Brazil Real</option>
-        <option value="CAD">Canada Dollar</option>
-        <option value="CNY">China Yuan Renminbi</option>
-        <option value="EUR">Euro Member Countries</option>
-        <option value="GBP">United Kingdom Pound</option>
-        <option value="IDR">Indonesia Rupiah</option>
-        <option value="INR">India Rupee</option>
-        <option value="JPY">Japan Yen</option>
-        <option value="KRW">Korea (South) Won</option>
-        <option value="MEX">Mexico Peso</option>
-        <option value="RUB">Russia Ruble</option>
-        <option value="SAR">Saudi Arabia Riyal</option>
-        <option value="TRY">Turkey Lira</option>
-        <option value="USD">United States Dollar</option>
-        <option value="ZAR">South Africa Rand</option>
-    </select>
+        <select id="cur2" onchange=validateSelection(this)>
+            <option value="ARS">Argentina Peso</option>
+            <option value="AUD">Australia Dollar</option>
+            <option value="BRL">Brazil Real</option>
+            <option value="CAD">Canada Dollar</option>
+            <option value="CNY">China Yuan Renminbi</option>
+            <option value="EUR">Euro Member Countries</option>
+            <option value="GBP">United Kingdom Pound</option>
+            <option value="IDR">Indonesia Rupiah</option>
+            <option value="INR">India Rupee</option>
+            <option value="JPY">Japan Yen</option>
+            <option value="KRW">Korea (South) Won</option>
+            <option value="MXN">Mexico Peso</option>
+            <option value="RUB">Russia Ruble</option>
+            <option value="SAR">Saudi Arabia Riyal</option>
+            <option value="TRY">Turkey Lira</option>
+            <option value="USD">United States Dollar</option>
+            <option value="ZAR">South Africa Rand</option>
+        </select>
 
-    <button id="goBtn" type="button" onclick=genOutput() disabled=true>Go!</button>
+        <button id="goBtn" type="button" onclick=genOutput() disabled=true>Go!</button>
+    </p>
+
     <div id="results-panel"></div>
 
     <div>
