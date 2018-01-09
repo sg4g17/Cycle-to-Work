@@ -153,6 +153,18 @@
     <script>
         var missing = {};
 
+        var g_indicators = [
+            "population",
+            "employment",
+            "import",
+            "export",
+            "foreigntrade",
+            "GDP",
+            "InflationGDPdeflator",
+            "Inflationconsumerprices",
+            "interestrate"
+        ];
+
         function findStrongestCor() {
             d3.csv("static/matrixFormatted.csv", function(exdata) {
                 d3.csv("static/all_data.csv", function(data) {
@@ -164,7 +176,7 @@
 
                             var targetLabel = sel1 + "-" + sel2;
                             // console.log(targetLabel);
-                            var targetEx = aggregateExchangeDataForTarget(exdata, targetLabel);
+                            var targetEx = aggregateExchangeDataForTarget(exdata, sel1, sel2);
                             var graphData = [];
                             var years = [];
                             var cor = calcCorrCoef(sel1, sel2, data, targetEx, targetLabel, graphData, years);
@@ -174,6 +186,9 @@
                             }
                         }
                     }
+                    let avgCorInd = {};
+                    aggregateIndictorCor(allCor, avgCorInd);
+                    printCor("Indicator with the Strongest Correlation", avgCorInd);
 
                     // debug logging
                     if (Object.keys(missing).length > 0) {
@@ -193,6 +208,8 @@
                         return v1 - v2;
                     });
 
+                    $("#print-panel").append("<p>Overall Strongest correlations</p>");
+
                     // print list to page
                     for (i = 0; i < sortedCorkeys.length; i++) {
                         var key = sortedCorkeys[i];
@@ -206,6 +223,71 @@
             });
         }
 
+        function printCor(title, cor) {
+            let sortedCorkeys = Object.keys(cor).sort(function(key1, key2) {
+                return Math.abs(cor[key1]) < Math.abs(cor[key2]);
+            });
+
+            // print title
+            $("#print-panel").append("<p>" + title + "</p>");
+
+            //print list
+            for (i = 0; i < sortedCorkeys.length; i++) {
+                var key = sortedCorkeys[i];
+                var label = convertIndicatorLabel(key) + " = " + (+cor[key]).toFixed(2);
+                var node = document.createElement("LI");
+                var textnode = document.createTextNode(label);
+                node.appendChild(textnode);
+                document.getElementById("print-panel").appendChild(node);
+            }
+        }
+
+        function aggregateIndictorCor(allCor, avgCorInd) {
+            // find the average correlation positive and negative cor for each indicator
+            let corIndSum = {};
+            let corIndCount = {};
+
+            // init sums and count
+            for (let i = 0; i < g_indicators.length; i++) {
+                let indCode = g_indicators[i];
+                corIndSum[indCode] = 0;
+                corIndCount[indCode] = 0;
+            }
+
+            for (let corKey in allCor) {
+                let val = allCor[corKey];
+                let countryInd = corKey.split("_")[1];
+                let indCode = countryInd.split("-")[1];
+
+                if (val === undefined || isNaN(val)) {
+                    console.log("skipping " + corKey + " with cor " + val)
+                } else {
+                    corIndSum[indCode] += Math.abs(+val);
+                    corIndCount[indCode] += 1;
+                }
+            }
+
+            for (let i = 0; i < g_indicators.length; i++) {
+                let indCode = g_indicators[i];
+                avgCorInd[indCode] = (+corIndSum[indCode]) / (+corIndCount[indCode]);
+            }
+        }
+
+        function convertIndicatorLabel(indCode) {
+            var indicatorsConverter = {
+                "population": "Population",
+                "employment": "Employment",
+                "import": "Imports",
+                "export": "Exoprts",
+                "foreigntrade": "Foreign Trade",
+                "GDP": "GDP",
+                "InflationGDPdeflator": "Inflation GDP Deflator",
+                "Inflationconsumerprices": "Inflation Consumer Prices",
+                "interestrate": "Interest Rate",
+            };
+            return indicatorsConverter[indCode];
+        }
+
         function prretyLabel(codeLabel) {
             var split1 = codeLabel.split("_");
             var exLabel = split1[0];
@@ -213,18 +295,9 @@
             var curCode = split2[0];
             var indCode = split2[1];
 
-            var indicators = {
-                "population": "Population",
-                "employment": "Employment",
-                "import": "Imports",
-                "foreigntrade": "Foreign Trade",
-                "GDP": "GDP",
-                "InflationGDPdeflator": "Inflation GDP Deflator",
-                "Inflationconsumerprices": "Inflation Consumer Prices",
-                "interestrate": "Interest Rate",
-            };
 
-            return exLabel + " with " + curCode + " " + indicators[indCode];
+
+            return exLabel + " with " + curCode + " " + convertIndicatorLabel(indCode);
         }
 
         function validateSelection(comp) {
@@ -476,7 +549,12 @@
             console.log(data);
         }
 
-        function aggregateExchangeDataForTarget(exd, targetLabel) {
+        function fixIndianCurCode(curCode) {
+            return curCode === "INR" ? "IND" : curCode;
+        }
+
+        function aggregateExchangeDataForTarget(exd, sel1, sel2) {
+            let targetLabel = fixIndianCurCode(sel1) + "-" + fixIndianCurCode(sel2);
             years = {};
             counts = {};
             for (var y = 1999; y <= 2016; y++) {
@@ -502,21 +580,10 @@
         }
 
         function calcCorrCoef(sel1, sel2, data, targetEx, targetLabel, dataOut, years) {
-            var indicators = [
-                "population",
-                "employment",
-                "import",
-                "foreigntrade",
-                "GDP",
-                "InflationGDPdeflator",
-                "Inflationconsumerprices",
-                "interestrate"
-            ];
-
             var indicatorLabels = [];
-            for (i = 0; i < indicators.length; i++) {
-                indicatorLabels.push(sel1 + "-" + indicators[i]);
-                indicatorLabels.push(sel2 + "-" + indicators[i]);
+            for (i = 0; i < g_indicators.length; i++) {
+                indicatorLabels.push(sel1 + "-" + g_indicators[i]);
+                indicatorLabels.push(sel2 + "-" + g_indicators[i]);
             }
 
             var xVals = [];
@@ -601,8 +668,8 @@
 
         function sumOfVarMinusMeanSquaredSquarerooted(values, mean) {
             var sumValMinusMeanSquared = 0.0;
-            for (let val in values) {
-                let valMinusMean = val - mean;
+            for (let i = 0; i < values.length; i++) {
+                let valMinusMean = +values[i] - mean;
                 sumValMinusMeanSquared += (valMinusMean * valMinusMean);
             }
             return Math.sqrt(sumValMinusMeanSquared);
