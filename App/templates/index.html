@@ -1,14 +1,14 @@
 <!doctype html>
 
 <head>
-  <meta charset="utf-8">
-  <!-- You need these lines if you ARE using a Node server -->
-  <title>Currency Analysis</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
+    <meta charset="utf-8">
+    <!-- You need these lines if you ARE using a Node server -->
+    <title>Currency Analysis</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v4.min.js"></script>
 
 
-  <!--
+    <!--
     <script src="../static/results.js"></script>
     <script type="text/javascript" src="static/d3.js"></script>
    
@@ -17,344 +17,344 @@
 
 <link type="text/css" rel="stylesheet" href="static/style.css">
 <style type="text/css">
-  svg {
-    font-size: 14px;
-  }
-
-  .axis {
-    shape-rendering: crispEdges;
-  }
-
-  .axis line {
-    stroke: #ddd;
-    stroke-width: .5px;
-  }
-
-  .axis path {
-    display: none;
-  }
-
-  rect.extent {
-    fill: #000;
-    fill-opacity: .125;
-    stroke: #fff;
-  }
-
-  rect.frame {
-    fill: #fff;
-    fill-opacity: .7;
-    stroke: #aaa;
-  }
-
-  circle {
-    fill: #ccc;
-    fill-opacity: .5;
-  }
-
-  .legend circle {
-    fill-opacity: 1;
-  }
-
-  .legend text {
-    font-size: 18px;
-    font-style: oblique;
-  }
-
-  .cell text {
-    pointer-events: none;
-  }
-
-  body {
-    height: 100%;
-    max-height: 100%;
-    width: 100%;
-    max-width: 100%;
-    overflow: auto;
-    padding: 5;
-    margin: 5;
-    border: 5;
-  }
-
-  table,
-  th,
-  td {
-    border: 1px solid black;
-    border-collapse: collapse;
-  }
-
-  th,
-  td {
-    padding: 5px;
-    text-align: center;
-  }
+    svg {
+        font-size: 14px;
+    }
+    
+    .axis {
+        shape-rendering: crispEdges;
+    }
+    
+    .axis line {
+        stroke: #ddd;
+        stroke-width: .5px;
+    }
+    
+    .axis path {
+        display: none;
+    }
+    
+    rect.extent {
+        fill: #000;
+        fill-opacity: .125;
+        stroke: #fff;
+    }
+    
+    rect.frame {
+        fill: #fff;
+        fill-opacity: .7;
+        stroke: #aaa;
+    }
+    
+    circle {
+        fill: #ccc;
+        fill-opacity: .5;
+    }
+    
+    .legend circle {
+        fill-opacity: 1;
+    }
+    
+    .legend text {
+        font-size: 18px;
+        font-style: oblique;
+    }
+    
+    .cell text {
+        pointer-events: none;
+    }
+    
+    body {
+        height: 100%;
+        max-height: 100%;
+        width: 100%;
+        max-width: 100%;
+        overflow: auto;
+        padding: 5;
+        margin: 5;
+        border: 5;
+    }
+    
+    table,
+    th,
+    td {
+        font-weight: 12px;
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+        text-align: center;
+    }
 </style>
 
 <body>
-  <script>
-    function validateSelection(comp) {
-      sel1 = $('#cur1').find(':selected').val();
-      sel2 = $('#cur2').find(':selected').val();
-      $('#goBtn').prop("disabled", sel1 === sel2);
-    }
-    function genOutput() {
-      sel1 = $('#cur1').find(':selected').val();
-      sel2 = $('#cur2').find(':selected').val();
-      //alert('you pressed go' + sel1 + ' - ' + sel2);
-      $.ajax({
-        url: 'static/input_relevantVariables.csv',
-        dataType: 'text',
-      }).done(findRelevantVariables);
-    }
-    function findRelevantVariables(data) {
-      var allRows = data.split(/\r?\n|\r/);
-      var results = new Array(4);
-      for (var singleRow = 1; singleRow < allRows.length; singleRow++) {
-        var rowCells = allRows[singleRow].split(',');
-        var currencies = rowCells[0].split('-');
-        var firstCurr = currencies[0];
-        var secondCurr = currencies[1];
-        if ((firstCurr == sel1) && (secondCurr == sel2)) {
-          results[0] = rowCells[0];
-          results[1] = rowCells[1];
-          results[2] = rowCells[2];
-          results[3] = rowCells[3];
-          break;
+    <script>
+        function validateSelection(comp) {
+            sel1 = $('#cur1').find(':selected').val();
+            sel2 = $('#cur2').find(':selected').val();
+            $('#goBtn').prop("disabled", sel1 === sel2);
         }
-      }
-      creategraph(results);
-    }
-    function creategraph(relevantRates) {
-      d3.csv("static/matrixFormatted.csv",
-        function (error, data) {
-          //If there's an error loading the data, print it out, then stop
-          if (error) {
-            console.log("ERROR:");
-            console.log(error);
-            return;
-          }
-          var currencies = [];
-          var currencyOfInterest = relevantRates;
-          data.forEach(function (d) {
-            for (var i = 0; i < currencyOfInterest.length; i++) {
-              if (d[currencyOfInterest[i]]) {
-                var currency = {};
-                currency.name = currencyOfInterest[i];
-                currency.values = [];
-                var parseTime = d3.timeParse("%d %b %Y");
-                currentValues = currencyOfInterest[i];
-                data.forEach(function (d) {
-                  var dataPoint = {}
-                  dataPoint.currencyOfInterest = +d[currentValues];
-                  var time = parseTime(d['Time']);
-                  dataPoint.year = time
-                  currency.values.push(dataPoint);
-                });
-                if (Object.keys(currencies).length < 4) {
-                  currencies.push(currency);
-                } else {
-                  break;
+
+        function genOutput() {
+            sel1 = $('#cur1').find(':selected').val();
+            sel2 = $('#cur2').find(':selected').val();
+            //alert('you pressed go' + sel1 + ' - ' + sel2);
+            $.ajax({
+                url: 'static/input_relevantVariables.csv',
+                dataType: 'text',
+            }).done(findRelevantVariables);
+        }
+
+        function findRelevantVariables(data) {
+            var allRows = data.split(/\r?\n|\r/);
+            var results = new Array(4);
+            for (var singleRow = 1; singleRow < allRows.length; singleRow++) {
+                var rowCells = allRows[singleRow].split(',');
+                var currencies = rowCells[0].split('-');
+                var firstCurr = currencies[0];
+                var secondCurr = currencies[1];
+                if ((firstCurr == sel1) && (secondCurr == sel2)) {
+                    results[0] = rowCells[0];
+                    results[1] = rowCells[1];
+                    results[2] = rowCells[2];
+                    results[3] = rowCells[3];
+                    break;
                 }
-              }
             }
-          });
-          console.log("Our data contains:");
-          console.log(currencies);
-          var margin = {
-            top: 10,
-            right: 10,
-            bottom: 10,
-            left: 10
-          };
-          var width = Math.floor($(window).width() * 0.8);
-          var height = Math.floor($(window).height() * 0.8);
-          var svg = d3.select('#results-panel')
-            .append('svg')
-            .attr('width', width + margin.left + margin.right)
-            .attr('height', height + margin.top + margin.bottom)
-            .append('g')
-            .attr('transform', 'translate(' + margin.left + ',' + margin.top + ")");
-          var x = d3.scaleTime()
-            .domain([
-              d3.min(currencies, function (c) {
-                return d3.min(c.values, function (d) {
-                  return d.year;
-                });
-              }),
-              d3.max(currencies, function (c) {
-                return d3.max(c.values, function (d) {
-                  return d.year;
-                });
-              })
-            ])
-            .range([0, width]);
-          var y = d3.scaleLinear()
-            .domain([
-              d3.min(currencies, function (c) {
-                return d3.min(c.values, function (d) {
-                  return d.currencyOfInterest;
-                });
-              }),
-              d3.max(currencies, function (c) {
-                return d3.max(c.values, function (d) {
-                  return d.currencyOfInterest;
-                });
-              })
-            ])
-            .range([height, 0]);
-          var colourScheme = d3.scaleOrdinal(d3.schemeCategory10)
-            .domain(currencies.map(function (d) {
-              return d.name;
-            }));
-          var line = d3.line()
-            .x(function (d) {
-              return x(d.year);
-            })
-            .y(function (d) {
-              return y(d.currencyOfInterest);
-            });
-          //We use selectAll to create (and manipulate) a number of
-          //groups at once
-          var currency = svg.selectAll(".currency")
-            .data(currencies)
-            .enter().append("g")
-            .attr("class", "currency");
-          //We then add a path to *every* "country" group at once
-          currency.append("path")
-            .attr("class", "line")
-            //Remember I said we were doing to use the line differently?
-            //This time, when we create the line, we pass the array of birthrates
-            //for each country directly to it as a *parameter*
-            .attr("d", function (d) {
-              return line(d.values);
-            })
-            .attr("fill", "none")
-            .attr("stroke-width", 2)
-            //Finally, we set the colour based on the scheme
-            .style("stroke", function (d) {
-              return colourScheme(d.name);
-            });
-          //Add the x axis
-          svg.append("g")
-            .attr("transform", "translate(0," + height + ")")
-            .call(d3.axisBottom(x))
-            .append("text")
-            .attr("fill", "#000")
-            .attr("y", 40)
-            .attr("x", width / 2)
-            .attr("text-anchor", "middle")
-            .text("Year");
-          //Add the y axis
-          svg.append("g")
-            .call(d3.axisLeft(y))
-            .append("text")
-            .attr("fill", "#000")
-            .attr("y", -40)
-            .attr("x", -height / 2)
-            .attr("transform", "rotate(-90)")
-            .attr("text-anchor", "middle")
-            .text("Exchange Rates");
-          //new legend
-          var leg = {};
-          var legend = d3.select("svg").append("g").attr('class', 'legend')
-            .attr("transform", function (d, i) {
-              return "translate(" + (width - 50) + ",100)"
-            })
-          legend.append("rect")
-            .attr("x", -15)
-            .attr("y", -15)
-            .attr("width", 120)
-            .attr("height", 110)
-            .attr("fill", d3.rgb("#DCDCDC"));
-          var items = legend.selectAll(".legendItem")
-            .data(currencies)
-            .enter().append("g")
-            .attr("class", "legendItem")
-            .attr("transform", function (d, i) {
-              return "translate(0," + i * 20 + ")"
-            });
-          items.append("text")
-            .datum(function (d) {
-              return {
-                name: d.name
-              };
-            })
-            .text(function (d) {
-              return d.name;
-            })
-            //.style("stroke", function(d) { return colourScheme(d.name); })
-            .style("font", "10px sans-serif")
-            .attr("text-anchor", "right")
-            .attr("alignment-baseline", "middle")
-            .attr("transform", function (d, i) {
-              return "translate(15,0)"
-            });
-          items.append("line")
-            .datum(function (d) {
-              return {
-                name: d.name
-              };
-            })
-            .attr("x1", 0)
-            .attr("x2", 10)
-            .attr("y1", 0)
-            .attr("y2", 0)
-            .style("stroke", function (d) {
-              return colourScheme(d.name);
-            });
+            creategraph(results);
         }
-      );
-    }
-  </script>
+
+        function creategraph(relevantRates) {
+            d3.csv("static/matrixFormatted.csv",
+                function(error, data) {
+                    //If there's an error loading the data, print it out, then stop
+                    if (error) {
+                        console.log("ERROR:");
+                        console.log(error);
+                        return;
+                    }
+                    var currencies = [];
+                    var currencyOfInterest = relevantRates;
+                    data.forEach(function(d) {
+                        for (var i = 0; i < currencyOfInterest.length; i++) {
+                            if (d[currencyOfInterest[i]]) {
+                                var currency = {};
+                                currency.name = currencyOfInterest[i];
+                                currency.values = [];
+                                var parseTime = d3.timeParse("%d %b %Y");
+                                currentValues = currencyOfInterest[i];
+                                data.forEach(function(d) {
+                                    var dataPoint = {}
+                                    dataPoint.currencyOfInterest = +d[currentValues];
+                                    var time = parseTime(d['Time']);
+                                    dataPoint.year = time
+                                    currency.values.push(dataPoint);
+                                });
+                                if (Object.keys(currencies).length < 4) {
+                                    currencies.push(currency);
+                                } else {
+                                    break;
+                                }
+                            }
+                        }
+                    });
+                    console.log("Our data contains:");
+                    console.log(currencies);
+                    var margin = {
+                        top: 10,
+                        right: 10,
+                        bottom: 10,
+                        left: 10
+                    };
+                    var width = Math.floor($(window).width() * 0.8);
+                    var height = Math.floor($(window).height() * 0.8);
+                    var svg = d3.select('#results-panel')
+                        .append('svg')
+                        .attr('width', width + margin.left + margin.right)
+                        .attr('height', height + margin.top + margin.bottom)
+                        .append('g')
+                        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ")");
+                    var x = d3.scaleTime()
+                        .domain([
+                            d3.min(currencies, function(c) {
+                                return d3.min(c.values, function(d) {
+                                    return d.year;
+                                });
+                            }),
+                            d3.max(currencies, function(c) {
+                                return d3.max(c.values, function(d) {
+                                    return d.year;
+                                });
+                            })
+                        ])
+                        .range([0, width]);
+                    var y = d3.scaleLinear()
+                        .domain([
+                            d3.min(currencies, function(c) {
+                                return d3.min(c.values, function(d) {
+                                    return d.currencyOfInterest;
+                                });
+                            }),
+                            d3.max(currencies, function(c) {
+                                return d3.max(c.values, function(d) {
+                                    return d.currencyOfInterest;
+                                });
+                            })
+                        ])
+                        .range([height, 0]);
+                    var colourScheme = d3.scaleOrdinal(d3.schemeCategory10)
+                        .domain(currencies.map(function(d) {
+                            return d.name;
+                        }));
+                    var line = d3.line()
+                        .x(function(d) {
+                            return x(d.year);
+                        })
+                        .y(function(d) {
+                            return y(d.currencyOfInterest);
+                        });
+                    //We use selectAll to create (and manipulate) a number of
+                    //groups at once
+                    var currency = svg.selectAll(".currency")
+                        .data(currencies)
+                        .enter().append("g")
+                        .attr("class", "currency");
+                    //We then add a path to *every* "country" group at once
+                    currency.append("path")
+                        .attr("class", "line")
+                        //Remember I said we were doing to use the line differently?
+                        //This time, when we create the line, we pass the array of birthrates
+                        //for each country directly to it as a *parameter*
+                        .attr("d", function(d) {
+                            return line(d.values);
+                        })
+                        .attr("fill", "none")
+                        .attr("stroke-width", 2)
+                        //Finally, we set the colour based on the scheme
+                        .style("stroke", function(d) {
+                            return colourScheme(d.name);
+                        });
+                    //Add the x axis
+                    svg.append("g")
+                        .attr("transform", "translate(0," + height + ")")
+                        .call(d3.axisBottom(x))
+                        .append("text")
+                        .attr("fill", "#000")
+                        .attr("y", 40)
+                        .attr("x", width / 2)
+                        .attr("text-anchor", "middle")
+                        .text("Year");
+                    //Add the y axis
+                    svg.append("g")
+                        .call(d3.axisLeft(y))
+                        .append("text")
+                        .attr("fill", "#000")
+                        .attr("y", -40)
+                        .attr("x", -height / 2)
+                        .attr("transform", "rotate(-90)")
+                        .attr("text-anchor", "middle")
+                        .text("Exchange Rates");
+                    //new legend
+                    var leg = {};
+                    var legend = d3.select("svg").append("g").attr('class', 'legend')
+                        .attr("transform", function(d, i) {
+                            return "translate(" + (width - 50) + ",100)"
+                        })
+                    legend.append("rect")
+                        .attr("x", -15)
+                        .attr("y", -15)
+                        .attr("width", 120)
+                        .attr("height", 110)
+                        .attr("fill", d3.rgb("#DCDCDC"));
+                    var items = legend.selectAll(".legendItem")
+                        .data(currencies)
+                        .enter().append("g")
+                        .attr("class", "legendItem")
+                        .attr("transform", function(d, i) {
+                            return "translate(0," + i * 20 + ")"
+                        });
+                    items.append("text")
+                        .datum(function(d) {
+                            return {
+                                name: d.name
+                            };
+                        })
+                        .text(function(d) {
+                            return d.name;
+                        })
+                        //.style("stroke", function(d) { return colourScheme(d.name); })
+                        .style("font", "10px sans-serif")
+                        .attr("text-anchor", "right")
+                        .attr("alignment-baseline", "middle")
+                        .attr("transform", function(d, i) {
+                            return "translate(15,0)"
+                        });
+                    items.append("line")
+                        .datum(function(d) {
+                            return {
+                                name: d.name
+                            };
+                        })
+                        .attr("x1", 0)
+                        .attr("x2", 10)
+                        .attr("y1", 0)
+                        .attr("y2", 0)
+                        .style("stroke", function(d) {
+                            return colourScheme(d.name);
+                        });
+                }
+            );
+        }
+    </script>
 
 
-  <h1>G20 Currency Analysis</h1>
-  <h1>Exchange Rates</h1>
-  <a href="index2.html">Economic Indicators</a>
+    <h1>G20 Currency Analysis</h1>
+    <h1>Exchange Rates</h1>
+    <a href="index2.html">Economic Indicators</a>
 
-  <h3>Most predictable currencies exchange Top 3</h3>
-  <table style="width:300px">
-  
-      <tr>
-        <th>Currency Exchange</th>
-        <th>MSE</th>
-      </tr>
-      <tr>
-        <td>CNY-TRY</td>
-        <td>1.29</td>
-      </tr>
-      <tr>
-        <td>MXN-CNY</td>
-        <td>1,37</td>
-      </tr>
-      <tr>
-        <td>EUR-TRY</td>
-        <td>1,47</td>
-      </tr>
-  </table>
-  <h3>Least predictable currencies exchange Top 3</h3>
-  <table style="width:300px">
-  
-      <tr>
-        <th>Currency Exchange</th>
-        <th>MSE</th>
-      </tr>
-      <tr>
-        <td>SAR-USD</td>
-        <td>62.30</td>
-      </tr>
-      <tr>
-        <td>IDR-INR</td>
-        <td>43.19</td>
-      </tr>
-      <tr>
-        <td>INR-IDR</td>
-        <td>40.43</td>
-      </tr>
-  </table>
+    <p>Most predictable currencies exchange Top 3</p>
+    <table style="width:500px">
+
+        <tr>
+            <th>Currency Exchange</th>
+            <th>MSE</th>
+        </tr>
+        <tr>
+            <td>CNY-TRY</td>
+            <td>1.29</td>
+        </tr>
+        <tr>
+            <td>MXN-CNY</td>
+            <td>1,37</td>
+        </tr>
+        <tr>
+            <td>EUR-TRY</td>
+            <td>1,47</td>
+        </tr>
+    </table>
+    <p>Least predictable currencies exchange Top 3</p>
+    <table style="width:500px">
+
+        <tr>
+            <th>Currency Exchange</th>
+            <th>MSE</th>
+        </tr>
+        <tr>
+            <td>SAR-USD</td>
+            <td>62.30</td>
+        </tr>
+        <tr>
+            <td>IDR-INR</td>
+            <td>43.19</td>
+        </tr>
+        <tr>
+            <td>INR-IDR</td>
+            <td>40.43</td>
+        </tr>
+    </table>
 
 
-  <p>Please select two different currencies</p>
-  <select id="cur1" onchange=validateSelection(this)>
+    <p>Please select two different currencies</p>
+    <select id="cur1" onchange=validateSelection(this)>
     <option value="ARS">Argentina Peso</option>
     <option value="AUD">Australia Dollar</option>
     <option value="BRL">Brazil Real</option>
@@ -374,7 +374,7 @@
     <option value="ZAR">South Africa Rand</option>
   </select>
 
-  <select id="cur2" onchange=validateSelection(this)>
+    <select id="cur2" onchange=validateSelection(this)>
     <option value="ARS">Argentina Peso</option>
     <option value="AUD">Australia Dollar</option>
     <option value="BRL">Brazil Real</option>
@@ -394,14 +394,14 @@
     <option value="ZAR">South Africa Rand</option>
   </select>
 
-  <button id="goBtn" type="button" onclick=genOutput() disabled=true>Go!</button>
+    <button id="goBtn" type="button" onclick=genOutput() disabled=true>Go!</button>
 
 
 
-  <div id="results-panel"></div>
+    <div id="results-panel"></div>
 
-  <div>
-    <h1>By Team Z</h1>
-  </div>
+    <div>
+        <h1>By Team Z</h1>
+    </div>
 
 </body>
