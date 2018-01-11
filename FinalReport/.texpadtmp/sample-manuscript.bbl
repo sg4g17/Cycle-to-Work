@@ -1,0 +1,154 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{9}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{}, \showDOI{}, and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showDOI}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showDOI #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showDOI      \undefined \def \showDOI       #1{#1}\fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[\protect\citeauthoryear{Abbate and Marcellino}{Abbate and
+  Marcellino}{2018}]%
+        {abbate2018point}
+\bibfield{author}{\bibinfo{person}{Angela Abbate} {and}
+  \bibinfo{person}{Massimiliano Marcellino}.} \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Point, interval and density forecasts of exchange
+  rates with time varying parameter models}.
+\newblock \bibinfo{journal}{{\em Journal of the Royal Statistical Society:
+  Series A (Statistics in Society)\/}} \bibinfo{volume}{181},
+  \bibinfo{number}{1} (\bibinfo{year}{2018}), \bibinfo{pages}{155--179}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Burstein, Eichenbaum, and Rebelo}{Burstein
+  et~al\mbox{.}}{2005}]%
+        {burstein2005large}
+\bibfield{author}{\bibinfo{person}{Ariel Burstein}, \bibinfo{person}{Martin
+  Eichenbaum}, {and} \bibinfo{person}{Sergio Rebelo}.}
+  \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{Large devaluations and the real exchange rate}.
+\newblock \bibinfo{journal}{{\em Journal of political Economy\/}}
+  \bibinfo{volume}{113}, \bibinfo{number}{4} (\bibinfo{year}{2005}),
+  \bibinfo{pages}{742--784}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Edwards and Mason}{Edwards and Mason}{2014}]%
+        {edwards2014spinning}
+\bibfield{author}{\bibinfo{person}{Ryan~D Edwards} {and}
+  \bibinfo{person}{Carl~N Mason}.} \bibinfo{year}{2014}\natexlab{}.
+\newblock \showarticletitle{Spinning the wheels and rolling the dice:
+  Life-cycle risks and benefits of bicycle commuting in the US}.
+\newblock \bibinfo{journal}{{\em Preventive medicine\/}}  \bibinfo{volume}{64}
+  (\bibinfo{year}{2014}), \bibinfo{pages}{8--13}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Edwards}{Edwards}{2006}]%
+        {edwards2006relationship}
+\bibfield{author}{\bibinfo{person}{Sebastian Edwards}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \bibinfo{booktitle}{{\em The relationship between exchange rates and
+  inflation targeting revisited}}.
+\newblock \bibinfo{type}{{T}echnical {R}eport}. \bibinfo{institution}{National
+  Bureau of Economic Research}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Iacono, Krizek, and El-Geneidy}{Iacono
+  et~al\mbox{.}}{2008}]%
+        {iacono2008access}
+\bibfield{author}{\bibinfo{person}{Michael Iacono}, \bibinfo{person}{Kevin
+  Krizek}, {and} \bibinfo{person}{Ahmed~M El-Geneidy}.}
+  \bibinfo{year}{2008}\natexlab{}.
+\newblock \showarticletitle{Access to destinations: how close is close enough?
+  Estimating accurate distance decay functions for multiple modes and different
+  purposes}.
+\newblock  (\bibinfo{year}{2008}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Kuruwitaarachchi, Peiris, Madawala, Perera,
+  and Perera}{Kuruwitaarachchi et~al\mbox{.}}{2018}]%
+        {kuruwitaarachchi2018design}
+\bibfield{author}{\bibinfo{person}{Nuwan Kuruwitaarachchi},
+  \bibinfo{person}{MKM Peiris}, \bibinfo{person}{CN Madawala},
+  \bibinfo{person}{KMAR Perera}, {and} \bibinfo{person}{VUN Perera}.}
+  \bibinfo{year}{2018}\natexlab{}.
+\newblock \showarticletitle{Design and Development of an Algorithm to Predict
+  Fluctuations of Currency Rates}.
+\newblock \bibinfo{journal}{{\em World Academy of Science, Engineering and
+  Technology, International Journal of Computer and Information Engineering\/}}
+  \bibinfo{volume}{5}, \bibinfo{number}{2} (\bibinfo{year}{2018}).
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Leung, Chen, and Daouk}{Leung
+  et~al\mbox{.}}{2000}]%
+        {leung2000forecasting}
+\bibfield{author}{\bibinfo{person}{Mark~T Leung}, \bibinfo{person}{An-Sing
+  Chen}, {and} \bibinfo{person}{Hazem Daouk}.} \bibinfo{year}{2000}\natexlab{}.
+\newblock \showarticletitle{Forecasting exchange rates using general regression
+  neural networks}.
+\newblock \bibinfo{journal}{{\em Computers \& Operations Research\/}}
+  \bibinfo{volume}{27}, \bibinfo{number}{11} (\bibinfo{year}{2000}),
+  \bibinfo{pages}{1093--1110}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Philip, Taofiki, and Bidemi}{Philip
+  et~al\mbox{.}}{2011}]%
+        {philip2011artificial}
+\bibfield{author}{\bibinfo{person}{Adewole~Adetunji Philip},
+  \bibinfo{person}{Akinwale~Adio Taofiki}, {and}
+  \bibinfo{person}{Akintomide~Ayo Bidemi}.} \bibinfo{year}{2011}\natexlab{}.
+\newblock \showarticletitle{Artificial neural network model for forecasting
+  foreign exchange rate}.
+\newblock \bibinfo{journal}{{\em World of Computer Science and Information
+  Technology Journal\/}} \bibinfo{volume}{1}, \bibinfo{number}{3}
+  (\bibinfo{year}{2011}), \bibinfo{pages}{110--118}.
+\newblock
+
+
+\bibitem[\protect\citeauthoryear{Rossi}{Rossi}{2013}]%
+        {rossi2013exchange}
+\bibfield{author}{\bibinfo{person}{Barbara Rossi}.}
+  \bibinfo{year}{2013}\natexlab{}.
+\newblock \showarticletitle{Exchange rate predictability}.
+\newblock \bibinfo{journal}{{\em Journal of economic literature\/}}
+  \bibinfo{volume}{51}, \bibinfo{number}{4} (\bibinfo{year}{2013}),
+  \bibinfo{pages}{1063--1119}.
+\newblock
+
+
+\end{thebibliography}

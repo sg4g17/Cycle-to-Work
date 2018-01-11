@@ -1,0 +1,250 @@
+\section{Introduction}
+As team we had first decided on a different topic "Will I live longer if I cycle to work?" . But in the process of trying to collect data it was seen that there was a lot of scientific studies associated with the topic but we struggled to find a way of meaningfully combining different life expectancy models.  Most of the data we found was already clean and we did not have much processing to do\cite{iacono2008access}. We could not find out any scientific method that directly links the factors we were considering(amount of oxygen intake, pollution,BMI etc)to the increase in life expectancy\cite{edwards2014spinning}.Combining all these factors into one prediction model became a challenge.So ,after spending almost 4 weeks in trying to collect data we had to shift our focus to some other topic where we could get a significantly high volume of data.Now we are trying to predict the top three indicators affecting the currency of that country.After a considerable amount of research We have taken into account the following factors exchange rates,interest rates, employment, population, import,export,GDP and inflation\cite{kuruwitaarachchi2018design}.The annual factors,like the employment, population, trade networks,GDP and inflation are taken in the time range of 1991-2016.
+
+% Head 1
+\section{Implementation}
+\subsection{Cleaning high frequency data with python} 
+The data that we have collected are from oanda.com,Bank of England and World Bank websites.It contains employment rates,population, GDP, import,export,inflation,interest and currencies of all G20 countries\cite{kuruwitaarachchi2018design}. Considering 16 exchange rates and 9 indicators, we have 144(two are missing) indicator to look up.
+\newline
+\includegraphics[width=0.40\textwidth]{aa.png}
+
+\subsubsection{}{First step : Download} 
+\newline
+For the currency exchange data ,it was about weekly average exchange rates from December 1998 to December 2017. We considered all currency of the G20's countries and downloaded all data considering the GBP as base currency\cite{abbate2018point}. Every file downloaded was made in this way : 
+
+\includegraphics[width=0.40\textwidth]{aaa2.png}
+
+For currency exchange data below technique was observed
+\begin{itemize} 
+\item Size of table : 1240 x 4 columns 
+\item Col[0]= Week(1,2,3,4) 
+\item Col[1]= Month-Year(i.e may 2002) 
+\item Col[2]= Bid ( Bid is the price a buyer is willing to pay for a security) 
+\item Col[3]= Ask ( Ask is the price a seller is willing to accept for a security) 
+\end{itemize}
+
+We had 16 files(16 because in the G20 group France,Italy,Germany and European Union has currency Euro). Using python we gave in input a file formed by 1240(included blank space between rows) x 4 columns and received the below output 
+
+\includegraphics[width=0.40\textwidth]{aaa1.png}
+
+All spaces were removed using python,saved in one different file, and an average between bid and ask was calculated.
+\newline
+\subsubsection{}{Third step : Creation of a complete matrix }
+\newline
+We wrote another python script called complete Matrix.py that was used to create all possible currency pair. Remembering that the currency were 16 , we had a output matrix with 16x16 column and 994 rows.
+
+\includegraphics[width=0.4\textwidth]{bbb.png}
+\subsection{Model High frequency Data}
+
+\subsubsection{}{Purpose}
+
+The target for this assignment was to find, giving in input one currency exchange, the \textbf{three} most relevant currency exchanges that most influences the input. To do that we considered the matrix containing all possible combinations of currency exchanges and we used the Matlab. We used linear regression technique to create a model that eventually predicts future values of currency exchange  and the most "relevant variables".
+
+\subsubsection{}{Procedure}
+To find the most relevant exchange rates for the input, it was necessary to write a Matlab script using CVX tool. CVX is a modeling system for constructing and solving disciplined convex programs (DCPs)\cite{leung2000forecasting}. 
+
+\includegraphics[width=0.4\textwidth]{ccc.png}
+
+Explanation of the procedure : 
+
+\begin{itemize}
+\item cvx\_begin : Must be written as the first instruction of a CVX model
+\item cvx\_begin quiet : Prevents the model from producing any screen output while it is being solved.
+\item cvx\_end : Must be the last instruction of the CVX procedure 
+\item variable : It is used to declare the variable, it includes the name of the variable, an optional dimension list, and one or more keywords that provide additional information about the content or structure of the variable.
+\item minimize : It is a command used to declare an objective function( can be also maximize) 
+N.B. The objective function in a call to minimize must be convex; the objective function in a call to maximize must be concave. In this case Y*w2-f is convex.
+\textbf{Goal :To find the best weight vector that minimizes the error }
+\item +gamma(w2) : We used gamma for the ℓ1 regularization like \textit{\textbf{Lasso}}. This technique is normally used to solve the overfitting problem in statistical models. \textbf{In this particular case we thought that it was a good idea since we built a model using 211 different variables and so the model was complex and the risk of overfitting was high}
+\item find(abs(w2)\textgreater(1e-5) : we found which weights are not switched off by the regularizer, that are the most relevant variables. 
+\end{itemize}
+
+After obtaining the most relevant values, we split all the data in training set and test set and calculated the MSE (Means Squared Error) on the test set. After executing the script 15 times ,we had an average error of 20 on the test set\cite{rossi2013exchange}. 
+
+
+\subsubsection{}{Justification about gamma \\}
+
+One of the most difficult thing was about setting gamma for the regularization. After a considerable amount of research we understood that it is almost impossible set a good gamma because it is totally dependent on both the training set and all parameters that were used\cite{philip2011artificial}. 
+
+\begin{itemize}
+\item Gamma is dependent on both the training set and the other parameters you use.
+\item There is no “good Gamma” for any data set alone
+\item Mathematically you call “Gamma” the “Lagrangian multiplier” (complexity control).
+\item The higher Gamma is, the higher the regularization. Increasing Gamma results in less overfitting but also greater bias.
+\item Gamma values around 20 are extremely high, and should be used only when you are using high depth or if you want to directly control the features which are dominating in the data set (i.e too strong feature engineering). 
+
+\end{itemize}
+
+To find the most relevant values, based on the dataset, gamma was changed automatically in every iteration, and so it was increased until exactly three variables were not switched off.
+
+\subsubsection{Create a model}
+The second analysis that we did using the high frequency data values, was about creating a model that was able to predict the currency exchange trend establishing the top three and the least three predictable currency exchange. To do that we still used the CVX tool, regularizing the function but in this case gamma was fixed. We made researches and we saw many examples, moreover we run practical testing with different values of gamma and at the end we decided to set gamma = 8.0.
+
+The dataset was divided in training and test using the proportion 75\% and 25\% respectively.Then the script was run using CVX tool. 
+
+
+\includegraphics[width=0.4\textwidth]{error.png}
+
+In the application we put two tables containing the top 3 most and the top 3 least predictable exchange rates, the currencies exchanges with the lowest error and the highest error on the test set respectively.
+
+
+\subsubsection{}{Justification}
+
+In the beginning there were some doubts about using regression technique or an ANN(Artificial Neural network)\cite{leung2000forecasting}.
+We considered both merits and de-merits but in the end we chose to use linear regression principally for two reasons : 
+\begin{itemize}
+\item The main reason was that the ANN is a black box method and it is very difficult to find any relationship between variables, on the contrary these relationships can easily be shown by regression models. 
+\item The method of least squared regression converge much faster than a neural network, and this means a saving of resources and time 
+\end{itemize}
+
+\subsection{Low Frequency data}
+The low frequency data included the data of G-20 population, employment, trade network, GDP, inflation and interest rate. Every files downloaded was made in this way: 
+\newline
+\includegraphics[width=0.40\textwidth]{all_data.png}
+\newline
+The size of each factor of G-20 dataset table is 265 rows time 61 columns and each row is a country's factor data  from 1960 to 2016.
+Firstly, we used python code to select the data of G-20 and used append function to put the G-20 data into a new array.
+Then,  in order to clean out the data suitable for using and analysis, we used the zip function to transpose the array.
+Next, Due to the low frequency data were analyzed from 1991 to 2016, we filtered the data and put it into the new csv file.
+Furthermore, we used replace function to remove the space, which may cause the Index error.Using this python script all low frequency data were filtered and we put the all cleaned data into one file.
+\newline
+\includegraphics[width=0.40\textwidth]{Capture.JPG}
+\newline
+\subsection{Design}
+\subsubsection{}{Framework with Flask}
+It a simple framework with no roadblocks which we are using as a web server
+\subsubsection{}{Frontend with Javascript}
+The front endcoding was done using javascipt
+\subsubsection{}{Displaying Result}
+D3 is the best choice for interactivity.Hence we have used D3 for displaying the result
+
+\subsubsection{}{Application}
+ The web application also loads the high frequency (weekly samples) exchange rate data, this is then aggregated down to year samples for analysis with the economic indicators.
+ \newline
+\includegraphics[width=0.30\textwidth]{web.jpg}
+\newline
+The web app has the following two functions:
+1)	Finding Strongest Correlation – when this button is pressed the web app iterates through each exchange rate and calculates the correlation coefficient between it and each related economic indicator.  This sorted in order of strength (closest to either 1.0 or -1.0) and then displayed.  This allows us to find what are the strongest and weakest correlations. The app then also aggregates the absolute value of each correlation coefficient (to prevent positive and negative correlations cancelling each other out and allowing us to find the average strength of the correlation) with respect to the type of economic indicator.  This then allows us to find the type of economic indicator which is most correlated with exchange rates.
+2)	Go! – This button takes a selected exchange rate and then generates a scatter plot for each of the entomic indicators that are most correlated with that exchange rate. These are present in a 4 x 4 grid, the selected exchange rate is in the top right corner, and each economic indicator is plotted on the diagonal, each labelled with their respective correlation coefficient related to the exchange rate.  The user is then able to see a correlation scatter plot for each variable by tracing the horizontal and vertical intersection.
+% Head 2
+
+
+% Head 3
+\section{Results}
+\subsection{}{Observation}
+As the data we have used is not very huge, we chose to find the strongest correlation between the exchange rates and the indicators which led to this correlation. We have used Pearson.s correlation coefficient as the mathematical approach since the data was not suitable for any mathematical regression or any other kind of predictive analysis. The result that we have found can be summarised below showing the ranking of the indicators in terms of strongest correlation.
+\newline
+Population = 0.62\newline
+GDP = 0.60\newline
+Imports = 0.59\newline
+Exports = 0.58\newline
+Foreign Trade = 0.50\newline
+Inflation GDP Deflator = 0.40\newline
+Employment = 0.40\newline
+Interest Rate = 0.40\newline
+Inflation Consumer Prices = 0.38\newline
+However in some particular cases we have seen a very strong correlation which are worth mentioning
+\begin{table}[]
+\centering
+\caption{My caption}
+\label{my-label}
+\begin{tabular}{|l|l|l|}
+\hline
+Currency Code  & Indicator       & Value \\ \hline
+JPY-USD        & JPY GDP         & 0.99  \\ \hline
+JPY-SAR        & JPY GDP         & 0.99  \\ \hline
+SAR-JPY        & JPY GDP         & -0.99 \\ \hline
+MXN-CNY        & MXN Population  & -0.98 \\ \hline
+AUD-TRY        & TRY Population  & 0.98  \\ \hline
+CAD-TRY        & TRY Population  & 0.98  \\ \hline
+SAR-CNY        & SAR imports     & -0.98 \\ \hline
+AUD-IDR        & IDR Population  & 0.98  \\ \hline
+AUD-TRY        & AUD Population  & 0.98  \\ \hline
+MXN-CNY        & CNY Population  & -0.98 \\ \hline
+RUB-CAD        & CAD Population  & -0.98 \\ \hline
+CAD-TRY        & CAD Population  & 0.98  \\ \hline
+CNY-SAR        & SAR Imports     & 0.97  \\ \hline
+TRY-MXN        & MXN Inflation   & 0.97  \\ \hline
+RUB-AUD        & AUD Population  & -0.97 \\ \hline
+AUD-IDR        & AUD Population  & 0.97  \\ \hline
+AUD-ZAR        & AUD Population  & 0.97  \\ \hline
+AUD-ZAR        & ZAR  Population & 0.97  \\ \hline
+\end{tabular}
+\end{table}
+
+From the table above, a few things can be concluded
+
+\begin{itemize}
+\item GDP,Population,Imports and Inflation have been the strongest indicators in the past\cite{edwards2006relationship}. These factors have played the most important role in determining the exchange rates for the two currencies
+\item A high correlation value indicates that the corrosponding indicator is the strongest factor in determining the exchange rates between those two countries\cite{burstein2005large}. For example, We find a very strong correlation value (0.99) between Japanese Yen and US Dollar and also between Japanese Yen and South African Rand .The strongest indicator being Japan GDP. In the past,as the Gross Domestic Product of Japan has increased, the exchange rates between Japan and USA and also between Japan and South Africa have increased.An increase of Japanese population has led to more US Dollar and South African Rand in exchange for Japanese Yen.
+\end{itemize}
+\subsection{ANALYSIS}
+\subsubsection{}{Currency Exchange Trends}
+If we look at the currency exchange rates between Argentina (ARS) and USA (USD) we observe that the until 2001 the currency exchange value is 1 and then we see a sudden dip in the value. What could be the reason for this dip? Well, that was because each peso was index-linked to USD at 1ARS= 1USD. However, after the financial crisis of 2001, the fixed exchange rate system was abandoned. Since 2002, the exchange rate started to fluctuate, keeping the exchange rate at between 2.90 and 3.10 pesos per US dollar at that time.  
+This is the same case in terms of Saudi Riyal, where even today it is index linked to the USD @ 1 USD = 3.75 SAR 
+\subsubsection{}{Correlation Coefficient}
+If we look at the currency exchange rates JPY-USD, we observe that it has a .99 correlation value against the GDP of Japan. Yes, without any arguments we can agree that the GDP of a country has a direct impact on its currency value. Where we see that the overall influence (correlation coefficient value) of GDP to its countries currency is calculated to be .6. But in this case, we see a value of .99.
+\newline
+If we look at the history for the currency of Japan (YEN) we see that. Following World War II the Yen lost much of its value. To stabilize the Japanese economy the exchange rate of the yen was fixed at ¥360 per 1USD as part of the Bretton Woods system. When that system was abandoned in 1971, the Yen became undervalued and was allowed to float. The Yen had appreciated to a peak of ¥271 per 1 in 1973, then underwent periods of depreciation and appreciation due to the 1973 oil crisis, arriving at a value of ¥227 per 1USD by 1980. Since 1973, the Japanese government has maintained a policy of currency intervention, and the yen is therefore under a "dirty float" regime. This intervention continues until today and that is the reason we see such a tight correlation between the currency exchange of JPY-USD against the GDP of Japan.\newline
+But the question is does it stand good for all cases? Well, yes it does? For instance, if we look at the currency of China(CNY) and USA(USD) we see that both these two countries have a relatively huge GDP values, which does have an impact on their respective currencies. But when we look at the exchange rate which is a copula of both these countries currency. There is a possibility that the influence of the GDP values on the exchange rate tend to be slightly lower (Correlation coefficient of China’s GDP and US GDP against the exchange rate of CNY-USD is .92 and .87 respectively) but still have a significant impact the exchange rates. 
+
+% Head 4
+
+
+\section{Conclusion}
+
+
+
+     
+
+
+
+
+
+
+
+\section{Limitations and future work}
+
+
+
+
+
+ 
+
+
+
+% Start of "Sample References" section
+
+\section{Typical References in New ACM Reference Format}
+A paginated journal article \cite{Abril07}, an enumerated
+journal article \cite{Cohen07}, a reference to an entire issue \cite{JCohen96},
+a monograph (whole book) \cite{Kosiur01}, a monograph/whole book in a series (see 2a in spec. document)
+\cite{Harel79}, a divisible-book such as an anthology or compilation \cite{Editor00}
+followed by the same example, however we only output the series if the volume number is given
+\cite{Editor00a} (so Editor00a's series should NOT be present since it has no vol. no.),
+a chapter in a divisible book \cite{Spector90}, a chapter in a divisible book
+in a series \cite{Douglass98}, a multi-volume work as book \cite{Knuth97},
+an article in a proceedings (of a conference, symposium, workshop for example)
+(paginated proceedings article) \cite{Andler79}, a proceedings article
+with all possible elements \cite{Smith10}, an example of an enumerated
+proceedings article \cite{VanGundy07},
+an informally published work \cite{Harel78}, a doctoral dissertation \cite{Clarkson85},
+a master's thesis: \cite{anisi03}, an online document / world wide web
+resource \cite{Thornburg01, Ablamowicz07, Poker06}, a video game (Case 1) \cite{Obama08} and (Case 2) \cite{Novak03}
+and \cite{Lee05} and (Case 3) a patent \cite{JoeScientist001},
+work accepted for publication \cite{rous08}, 'YYYYb'-test for prolific author
+\cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other cites might contain
+'duplicate' DOI and URLs (some SIAM articles) \cite{Kirschmer:2010:AEI:1958016.1958018}.
+Boris / Barbara Beeton: multi-volume works as books
+\cite{MR781536} and \cite{MR781537}.
+
+A couple of citations with DOIs: \cite{2004:ITE:1009386.1010128,
+  Kirschmer:2010:AEI:1958016.1958018}. 
+
+Online citations: \cite{TUGInstmem, Thornburg01, CTANacmart}.  
+
+% Appendix
+
+% Bibliography
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{sample-bibliography}

@@ -1,0 +1,90 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: /Users/jpw/projects/Cycle-to-work/exchange-rate-analysis (1)/.texpadtmp/sample-manuscript.aux
+The style file: ../ACM-Reference-Format.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: ../sample-bibliography.bib
+Warning--I didn't find a database entry for "Abril07"
+Warning--I didn't find a database entry for "Cohen07"
+Warning--I didn't find a database entry for "JCohen96"
+Warning--I didn't find a database entry for "Kosiur01"
+Warning--I didn't find a database entry for "Harel79"
+Warning--I didn't find a database entry for "Editor00"
+Warning--I didn't find a database entry for "Editor00a"
+Warning--I didn't find a database entry for "Spector90"
+Warning--I didn't find a database entry for "Douglass98"
+Warning--I didn't find a database entry for "Knuth97"
+Warning--I didn't find a database entry for "Andler79"
+Warning--I didn't find a database entry for "Smith10"
+Warning--I didn't find a database entry for "VanGundy07"
+Warning--I didn't find a database entry for "Harel78"
+Warning--I didn't find a database entry for "Clarkson85"
+Warning--I didn't find a database entry for "anisi03"
+Warning--I didn't find a database entry for "Thornburg01"
+Warning--I didn't find a database entry for "Ablamowicz07"
+Warning--I didn't find a database entry for "Poker06"
+Warning--I didn't find a database entry for "Obama08"
+Warning--I didn't find a database entry for "Novak03"
+Warning--I didn't find a database entry for "Lee05"
+Warning--I didn't find a database entry for "JoeScientist001"
+Warning--I didn't find a database entry for "rous08"
+Warning--I didn't find a database entry for "SaeediMEJ10"
+Warning--I didn't find a database entry for "SaeediJETC10"
+Warning--I didn't find a database entry for "Kirschmer:2010:AEI:1958016.1958018"
+Warning--I didn't find a database entry for "MR781536"
+Warning--I didn't find a database entry for "MR781537"
+Warning--I didn't find a database entry for "2004:ITE:1009386.1010128"
+Warning--I didn't find a database entry for "TUGInstmem"
+Warning--I didn't find a database entry for "CTANacmart"
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=20001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Warning--no journal in iacono2008access
+Warning--no number and no volume in iacono2008access
+Warning--page numbers missing in both pages and numpages fields in iacono2008access
+Warning--page numbers missing in both pages and numpages fields in kuruwitaarachchi2018design
+You've used 9 entries,
+            5795 wiz_defined-function locations,
+            1435 strings with 18032 characters,
+and the built_in function-call counts, 10686 in all, are:
+= -- 1567
+> -- 343
+< -- 0
++ -- 111
+- -- 116
+* -- 725
+:= -- 1042
+add.period$ -- 46
+call.type$ -- 9
+change.case$ -- 60
+chr.to.int$ -- 9
+cite$ -- 13
+duplicate$ -- 886
+empty$ -- 632
+format.name$ -- 144
+if$ -- 2700
+int.to.chr$ -- 2
+int.to.str$ -- 1
+missing$ -- 32
+newline$ -- 112
+num.names$ -- 72
+pop$ -- 304
+preamble$ -- 1
+purify$ -- 140
+quote$ -- 0
+skip$ -- 292
+stack$ -- 0
+substring$ -- 812
+swap$ -- 93
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 158
+warning$ -- 4
+while$ -- 70
+width$ -- 0
+write$ -- 190
+(There were 36 warnings)
