@@ -227,7 +227,7 @@
                     //Add the x axis
                     svg.append("g")
                         .attr("transform", "translate(0," + height + ")")
-                        .style("font", "18px")
+                        .style("font", "24px")
                         .call(d3.axisBottom(x))
                         .append("text")
                         .attr("fill", "#000")
@@ -237,14 +237,15 @@
                         .text("Year");
                     //Add the y axis
                     svg.append("g")
+                        .style("font", "24px")
                         .call(d3.axisLeft(y))
                         .append("text")
                         .attr("fill", "#000")
-                        .attr("y", -80)
+                        .attr("y", -30)
                         .attr("x", -height / 2)
                         .attr("transform", "rotate(-90)")
                         .attr("text-anchor", "middle")
-                        .text("Exchange Rates");
+                        .text("Normalised Exchange Rates");
                     //new legend
                     var leg = {};
                     var legend = d3.select("svg").append("g").attr('class', 'legend')
@@ -351,7 +352,7 @@
     <div id="results-panel"></div>
 
     <div>
-        <h1>By Team Z</h1>
+        <h1>Top 3 influencing currencies</h1>
     </div>
 
 </body>
