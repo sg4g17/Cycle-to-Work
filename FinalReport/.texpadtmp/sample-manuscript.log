@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.26)  11 JAN 2018 09:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.26)  11 JAN 2018 10:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -32,7 +32,8 @@ Package acmart Info: Explicitly selecting natbib mode on input line 106.
 Package acmart Info: Not using anonymous mode on input line 114.
 Package acmart Info: Not using timestamp mode on input line 122.
 Package acmart Info: Not using authordraft mode on input line 132.
-Class acmart Info: Using format sigconf, number 4 on input line 141.
+Package acmart Info: Using authorversion mode on input line 141.
+Class acmart Info: Using format acmtog, number 3 on input line 141.
 Class acmart Info: Using fontsize 9pt on input line 199.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/amscls/amsart.cls
 Document Class: amsart 2015/03/04 v2.20.2
@@ -331,7 +332,7 @@ Package: nccfoots 2005/02/03 v1.2 NCC Footnotes Package (NCC)
 \c@footnotecopyrightpermission=\count121
  (/usr/local/texlive/2017/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2013/04/04 v0.2 Provides if(tex) conditional for PDFTeX, XeTeX, and LuaTeX
-) (/usr/local/texlive/2017/texmf-dist/tex/generic/pdftex/glyphtounicode.tex) (/usr/local/texlive/2017/texmf-dist/tex/latex/cmap/cmap.sty
+) (./glyphtounicode.tex) (/usr/local/texlive/2017/texmf-dist/tex/latex/cmap/cmap.sty
 Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
 ) (/usr/local/texlive/2017/texmf-dist/tex/latex/libertine/libertine.sty
 Package: libertine 2017/03/22 (Bob Tennent) Supports Libertine and Biolinum fonts for all LaTeX engines.
@@ -546,10 +547,10 @@ Package: fontenc 2017/04/05 v2.0i Standard LaTeX package
  (/usr/local/texlive/2017/texmf-dist/tex/latex/base/t1enc.def
 File: t1enc.def 2017/04/05 v2.0i Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
-)<<t1.cmap>>)
-(/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption.sty
+)<<t1.cmap>>) (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption.sty
 Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
- (/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty
+
+(/usr/local/texlive/2017/texmf-dist/tex/latex/caption/caption3.sty
 Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
 Package caption3 Info: TeX engine: e-TeX on input line 67.
 \captionmargin=\dimen130
@@ -583,7 +584,7 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@ACM@badge@skip=\skip58
 Class acmart Info: Printing CCS on input line 1253.
 Class acmart Info: Printing bibformat on input line 1253.
-Class acmart Info: Suppressing folios on input line 1260.
+Class acmart Info: Printing folios on input line 1258.
 Class acmart Info: Setting authorsperrow to 0 on input line 1263.
  (/usr/local/texlive/2017/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write4
@@ -617,7 +618,7 @@ LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 2458.
 )
 \c@theorem=\count129
- Excluding comment 'screenonly' Include comment 'printonly' Include comment 'anonsuppress' (/Users/jpw/projects/Cycle-to-work/exchange-rate-analysis (1)/.texpadtmp/sample-manuscript.aux)
+ Excluding comment 'screenonly' Include comment 'printonly' Include comment 'anonsuppress' (/Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.aux)
 \openout1 = `sample-manuscript.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/nxlmi/m/it on input line 39.
@@ -721,7 +722,7 @@ Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 LaTeX Info: Redefining \ref on input line 39.
 LaTeX Info: Redefining \pageref on input line 39.
 LaTeX Info: Redefining \nameref on input line 39.
- (/Users/jpw/projects/Cycle-to-work/exchange-rate-analysis (1)/.texpadtmp/sample-manuscript.out) (/Users/jpw/projects/Cycle-to-work/exchange-rate-analysis (1)/.texpadtmp/sample-manuscript.out)
+ (/Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.out) (/Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.out)
 \@outlinefile=\write5
 \openout5 = `sample-manuscript.out'.
 
@@ -758,19 +759,19 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: includehead includefoot twoside heightrounded 
-* h-part:(L,W,R)=(54.0pt, 506.295pt, 54.0pt)
-* v-part:(T,H,B)=(57.0pt, 664.96999pt, 73.0pt)
+* h-part:(L,W,R)=(52.0pt, 510.295pt, 52.0pt)
+* v-part:(T,H,B)=(52.0pt, 667.96999pt, 75.0pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=506.295pt
-* \textheight=626.0pt
-* \oddsidemargin=-18.26999pt
-* \evensidemargin=-18.26999pt
-* \topmargin=-15.26999pt
+* \textwidth=510.295pt
+* \textheight=615.0pt
+* \oddsidemargin=-20.26999pt
+* \evensidemargin=-20.26999pt
+* \topmargin=-20.26999pt
 * \headheight=13.0pt
 * \headsep=14.0pt
 * \topskip=10.0pt
-* \footskip=12.0pt
+* \footskip=24.0pt
 * \marginparwidth=24.0pt
 * \marginparsep=11.0pt
 * \columnsep=24.0pt
@@ -804,24 +805,19 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             `LinuxBiolinumT-TLF' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 17.28pt on input line 71.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 9.0pt on input line 71.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/b/n' will be
-(Font)              scaled to size 12.0pt on input line 71.
 LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
 (Font)              scaled to size 12.0pt on input line 71.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 12.0pt on input line 71.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 10.0pt on input line 71.
+
+Overfull \hbox (3.58015pt too wide) in paragraph at lines 71--71
+\T1/LinuxBiolinumT-TLF/m/n/12 PHILIP WIL-SON, NUN-ZIO GATTI, SUS-MITA GAN-GOPAD-HYAY, SUMESH RA-MACHAN-DRA, and BANG
+ []
+
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
 (Font)              scaled to size 7.0pt on input line 71.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 9.0pt on input line 71.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
-(Font)              scaled to size 10.95pt on input line 71.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 8.0pt on input line 71.
 LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
@@ -836,234 +832,255 @@ Package microtype Info: Loading generic settings for font family
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
 (Font)              scaled to size 6.2pt on input line 71.
- (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msa.cfg
+(/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 ) (/usr/local/texlive/2017/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) (./samplebody-journals.tex <aa.png, id=70, 688.974pt x 336.65775pt>
-File: aa.png Graphic file (type png)
- <use aa.png>
-Package pdftex.def Info: aa.png used on input line 9.
-(pdftex.def)             Requested size: 202.51491pt x 98.95357pt.
+) (./samplebody-journals.tex
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 10.0pt on input line 1.
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 16.
 
-Overfull \hbox (12.21248pt too wide) in paragraph at lines 7--10
-\T1/LinuxLibertineT-TLF/m/n/9 (-20) land and World Bank web-sites.It con-tains em-ploy-ment rates,population,
+Underfull \hbox (badness 10000) in paragraph at lines 16--20
+
  []
 
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 11.
-LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 11.
-<aaa2.png, id=72, 285.4665pt x 273.4215pt>
+<aaa2.png, id=87, 285.4665pt x 273.4215pt>
 File: aaa2.png Graphic file (type png)
  <use aaa2.png>
-Package pdftex.def Info: aaa2.png used on input line 15.
-(pdftex.def)             Requested size: 202.51491pt x 193.97623pt.
+Package pdftex.def Info: aaa2.png used on input line 35.
+(pdftex.def)             Requested size: 204.11488pt x 195.50739pt.
+LaTeX Font Info:    Font shape `T1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 8.0pt on input line 36.
 LaTeX Font Info:    Font shape `OT1/LinuxLibertineT-TLF/m/n' will be
-(Font)              scaled to size 9.0pt on input line 19.
- [1.1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+(Font)              scaled to size 9.0pt on input line 44.
 
- <./aa.png> <./aaa2.png>] <aaa1.png, id=92, 240.29774pt x 247.52475pt>
-File: aaa1.png Graphic file (type png)
- <use aaa1.png>
-Package pdftex.def Info: aaa1.png used on input line 28.
-(pdftex.def)             Requested size: 202.51491pt x 208.60298pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 30--32
+Underfull \hbox (badness 10000) in paragraph at lines 51--53
 
  []
 
-<bbb.png, id=93, 354.123pt x 373.395pt>
+[1.1{/usr/local/texlive/2017/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
+
+ <./aaa2.png>] <aaa1.png, id=107, 240.29774pt x 247.52475pt>
+File: aaa1.png Graphic file (type png)
+ <use aaa1.png>
+Package pdftex.def Info: aaa1.png used on input line 56.
+(pdftex.def)             Requested size: 204.11488pt x 210.2535pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 62--64
+
+ []
+
+<bbb.png, id=109, 354.123pt x 373.395pt>
 File: bbb.png Graphic file (type png)
  <use bbb.png>
-Package pdftex.def Info: bbb.png used on input line 36.
-(pdftex.def)             Requested size: 202.51491pt x 213.53816pt.
- <ccc.png, id=95, 374.5995pt x 315.579pt>
+Package pdftex.def Info: bbb.png used on input line 70.
+(pdftex.def)             Requested size: 204.11488pt x 215.23033pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/n' will be
+(Font)              scaled to size 9.0pt on input line 77.
+<ccc.png, id=111, 374.5995pt x 315.579pt>
 File: ccc.png Graphic file (type png)
  <use ccc.png>
-Package pdftex.def Info: ccc.png used on input line 46.
-(pdftex.def)             Requested size: 202.51491pt x 170.60754pt.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
-(Font)              scaled to size 9.0pt on input line 58.
-LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
-(Font)              scaled to size 9.0pt on input line 58.
+Package pdftex.def Info: ccc.png used on input line 82.
+(pdftex.def)             Requested size: 204.11488pt x 171.95584pt.
 
-Overfull \hbox (4.41783pt too wide) in paragraph at lines 59--60
+Underfull \vbox (badness 3536) has occurred while \output is active []
+
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/m/it' will be
+(Font)              scaled to size 9.0pt on input line 94.
+LaTeX Font Info:    Font shape `T1/LinuxLibertineT-TLF/b/it' will be
+(Font)              scaled to size 9.0pt on input line 94.
+LaTeX Font Info:    Try loading font information for TS1+LinuxBiolinumT-TLF on input line 95.
+ (/usr/local/texlive/2017/texmf-dist/tex/latex/libertine/TS1LinuxBiolinumT-TLF.fd
+File: TS1LinuxBiolinumT-TLF.fd 2017/03/20 (autoinst) Font definitions for TS1/LinuxBiolinumT-TLF.
+)
+LaTeX Font Info:    Font shape `TS1/LinuxBiolinumT-TLF/m/n' will be
+(Font)              scaled to size 9.0pt on input line 95.
+Package microtype Info: Loading generic settings for font family
+(microtype)             `LinuxBiolinumT-TLF' (encoding: TS1).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+ [2.2 <./aaa1.png> <./bbb.png> <./ccc.png>]
+Overfull \hbox (1.41783pt too wide) in paragraph at lines 95--96
 []\T1/LinuxLibertineT-TLF/m/n/9 (-20) find(abs(w2)>(1e-5) : we found which weights are not switched
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
+Underfull \hbox (badness 10000) in paragraph at lines 101--102
 
  []
 
-[2.2 <./aaa1.png> <./bbb.png> <./ccc.png>] <error.png, id=109, 383.63326pt x 281.853pt>
+<error.png, id=123, 383.63326pt x 281.853pt>
 File: error.png Graphic file (type png)
  <use error.png>
-Package pdftex.def Info: error.png used on input line 86.
-(pdftex.def)             Requested size: 202.51491pt x 148.78787pt.
- <all_data.png, id=111, 858.95906pt x 543.53062pt>
-File: all_data.png Graphic file (type png)
- <use all_data.png>
-Package pdftex.def Info: all_data.png used on input line 103.
-(pdftex.def)             Requested size: 202.51491pt x 128.14438pt.
- <Capture.JPG, id=112, 700.86844pt x 442.65375pt>
-File: Capture.JPG Graphic file (type jpg)
- <use Capture.JPG>
-Package pdftex.def Info: Capture.JPG used on input line 111.
-(pdftex.def)             Requested size: 202.51491pt x 127.90024pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 101--113
-
- []
-
-<web.jpg, id=113, 1425.325pt x 1166.3575pt>
-File: web.jpg Graphic file (type jpg)
- <use web.jpg>
-Package pdftex.def Info: web.jpg used on input line 124.
-(pdftex.def)             Requested size: 151.89003pt x 124.27756pt.
- [3.3 <./error.png> <./all_data.png> <./Capture.JPG>]
-
-LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 147.
-
-
-Overfull \hbox (3.2196pt too wide) in paragraph at lines 178--179
-[]\T1/LinuxLibertineT-TLF/m/n/9 (-20) GDP,Population,Imports and In-fla-tion have been the strongest
- []
-
+Package pdftex.def Info: error.png used on input line 122.
+(pdftex.def)             Requested size: 204.11488pt x 149.96198pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [4.4 <./web.jpg>]
+ <all_data.png, id=125, 858.95906pt x 543.53062pt>
+File: all_data.png Graphic file (type png)
+ <use all_data.png>
+Package pdftex.def Info: all_data.png used on input line 139.
+(pdftex.def)             Requested size: 204.11488pt x 129.1562pt.
+ <Capture.JPG, id=126, 700.86844pt x 442.65375pt>
+File: Capture.JPG Graphic file (type jpg)
+ <use Capture.JPG>
+Package pdftex.def Info: Capture.JPG used on input line 147.
+(pdftex.def)             Requested size: 204.11488pt x 128.91339pt.
 
-Package natbib Warning: Citation `Abril07' on page 5 undefined on input line 219.
+Underfull \hbox (badness 10000) in paragraph at lines 137--149
 
+ []
 
-Package natbib Warning: Citation `Cohen07' on page 5 undefined on input line 220.
+[3.3 <./error.png> <./all_data.png>] <web.jpg, id=137, 1425.325pt x 1166.3575pt>
+File: web.jpg Graphic file (type jpg)
+ <use web.jpg>
+Package pdftex.def Info: web.jpg used on input line 160.
+(pdftex.def)             Requested size: 153.09004pt x 125.2742pt.
 
 
-Package natbib Warning: Citation `JCohen96' on page 5 undefined on input line 220.
+LaTeX Warning: No positions in optional float specifier.
+               Default added (so using `tbp') on input line 183.
 
+[4.4 <./Capture.JPG> <./web.jpg>]
 
-Package natbib Warning: Citation `Kosiur01' on page 5 undefined on input line 221.
+Package natbib Warning: Citation `Abril07' on page 5 undefined on input line 255.
 
 
-Package natbib Warning: Citation `Harel79' on page 5 undefined on input line 222.
+Package natbib Warning: Citation `Cohen07' on page 5 undefined on input line 256.
 
 
-Package natbib Warning: Citation `Editor00' on page 5 undefined on input line 222.
+Package natbib Warning: Citation `JCohen96' on page 5 undefined on input line 256.
 
 
-Package natbib Warning: Citation `Editor00a' on page 5 undefined on input line 224.
+Package natbib Warning: Citation `Kosiur01' on page 5 undefined on input line 257.
 
 
-Package natbib Warning: Citation `Spector90' on page 5 undefined on input line 225.
+Package natbib Warning: Citation `Harel79' on page 5 undefined on input line 258.
 
 
-Package natbib Warning: Citation `Douglass98' on page 5 undefined on input line 226.
+Package natbib Warning: Citation `Editor00' on page 5 undefined on input line 258.
 
 
-Package natbib Warning: Citation `Knuth97' on page 5 undefined on input line 226.
+Package natbib Warning: Citation `Editor00a' on page 5 undefined on input line 260.
 
 
-Package natbib Warning: Citation `Andler79' on page 5 undefined on input line 228.
+Package natbib Warning: Citation `Spector90' on page 5 undefined on input line 261.
 
 
-Package natbib Warning: Citation `Smith10' on page 5 undefined on input line 229.
+Package natbib Warning: Citation `Douglass98' on page 5 undefined on input line 262.
 
 
-Package natbib Warning: Citation `VanGundy07' on page 5 undefined on input line 230.
+Package natbib Warning: Citation `Knuth97' on page 5 undefined on input line 262.
 
 
-Package natbib Warning: Citation `Harel78' on page 5 undefined on input line 231.
+Package natbib Warning: Citation `Andler79' on page 5 undefined on input line 264.
 
 
-Package natbib Warning: Citation `Clarkson85' on page 5 undefined on input line 231.
+Package natbib Warning: Citation `Smith10' on page 5 undefined on input line 265.
 
 
-Package natbib Warning: Citation `anisi03' on page 5 undefined on input line 232.
+Package natbib Warning: Citation `VanGundy07' on page 5 undefined on input line 266.
 
 
-Package natbib Warning: Citation `Thornburg01' on page 5 undefined on input line 233.
+Package natbib Warning: Citation `Harel78' on page 5 undefined on input line 267.
 
 
-Package natbib Warning: Citation `Ablamowicz07' on page 5 undefined on input line 233.
+Package natbib Warning: Citation `Clarkson85' on page 5 undefined on input line 267.
 
 
-Package natbib Warning: Citation `Poker06' on page 5 undefined on input line 233.
+Package natbib Warning: Citation `anisi03' on page 5 undefined on input line 268.
 
 
-Package natbib Warning: Citation `Obama08' on page 5 undefined on input line 233.
+Package natbib Warning: Citation `Thornburg01' on page 5 undefined on input line 269.
 
 
-Package natbib Warning: Citation `Novak03' on page 5 undefined on input line 233.
+Package natbib Warning: Citation `Ablamowicz07' on page 5 undefined on input line 269.
 
 
-Package natbib Warning: Citation `Lee05' on page 5 undefined on input line 234.
+Package natbib Warning: Citation `Poker06' on page 5 undefined on input line 269.
 
 
-Package natbib Warning: Citation `JoeScientist001' on page 5 undefined on input line 234.
+Package natbib Warning: Citation `Obama08' on page 5 undefined on input line 269.
 
 
-Package natbib Warning: Citation `rous08' on page 5 undefined on input line 235.
+Package natbib Warning: Citation `Novak03' on page 5 undefined on input line 269.
 
 
-Package natbib Warning: Citation `SaeediMEJ10' on page 5 undefined on input line 236.
+Package natbib Warning: Citation `Lee05' on page 5 undefined on input line 270.
 
 
-Package natbib Warning: Citation `SaeediJETC10' on page 5 undefined on input line 236.
+Package natbib Warning: Citation `JoeScientist001' on page 5 undefined on input line 270.
 
 
-Package natbib Warning: Citation `Kirschmer:2010:AEI:1958016.1958018' on page 5 undefined on input line 237.
+Package natbib Warning: Citation `rous08' on page 5 undefined on input line 271.
 
 
-Package natbib Warning: Citation `MR781536' on page 5 undefined on input line 239.
+Package natbib Warning: Citation `SaeediMEJ10' on page 5 undefined on input line 272.
 
 
-Package natbib Warning: Citation `MR781537' on page 5 undefined on input line 239.
+Package natbib Warning: Citation `SaeediJETC10' on page 5 undefined on input line 272.
 
 
-Package natbib Warning: Citation `2004:ITE:1009386.1010128' on page 5 undefined on input line 242.
+Package natbib Warning: Citation `Kirschmer:2010:AEI:1958016.1958018' on page 5 undefined on input line 273.
 
 
-Package natbib Warning: Citation `Kirschmer:2010:AEI:1958016.1958018' on page 5 undefined on input line 242.
+Package natbib Warning: Citation `MR781536' on page 5 undefined on input line 275.
 
 
-Package natbib Warning: Citation `TUGInstmem' on page 5 undefined on input line 244.
+Package natbib Warning: Citation `MR781537' on page 5 undefined on input line 275.
 
 
-Package natbib Warning: Citation `Thornburg01' on page 5 undefined on input line 244.
+Underfull \vbox (badness 2970) has occurred while \output is active []
 
 
-Package natbib Warning: Citation `CTANacmart' on page 5 undefined on input line 244.
 
-(/Users/jpw/projects/Cycle-to-work/exchange-rate-analysis (1)/.texpadtmp/sample-manuscript.bbl))
+Package natbib Warning: Citation `2004:ITE:1009386.1010128' on page 5 undefined on input line 278.
+
+
+Package natbib Warning: Citation `Kirschmer:2010:AEI:1958016.1958018' on page 5 undefined on input line 278.
+
+
+Package natbib Warning: Citation `TUGInstmem' on page 5 undefined on input line 280.
+
+
+Package natbib Warning: Citation `Thornburg01' on page 5 undefined on input line 280.
+
+
+Package natbib Warning: Citation `CTANacmart' on page 5 undefined on input line 280.
+
+(/Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.bbl))
 
 Package natbib Warning: There were undefined citations.
 
 [5.5]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 77.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 77.
- (/Users/jpw/projects/Cycle-to-work/exchange-rate-analysis (1)/.texpadtmp/sample-manuscript.aux)
+ (/Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 77.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 77.
 Package rerunfilecheck Info: File `sample-manuscript.out' has not changed.
 (rerunfilecheck)             Checksum: 5693BAF81FFDEA6F3040387034B71C47;2121.
  ) 
 Here is how much of TeX's memory you used:
- 17956 strings out of 492995
- 272166 string characters out of 6132703
- 381463 words of memory out of 5000000
- 20740 multiletter control sequences out of 15000+600000
- 152969 words of font info for 247 fonts, out of 8000000 for 9000
+ 17995 strings out of 492995
+ 272738 string characters out of 6132703
+ 379849 words of memory out of 5000000
+ 20763 multiletter control sequences out of 15000+600000
+ 139116 words of font info for 250 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,12n,94p,1290b,396s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinBiolinumTB.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
-Output written on "/Users/jpw/projects/Cycle-to-work/exchange-rate-analysis (1)/.texpadtmp/sample-manuscript.pdf" (5 pages, 961457 bytes).
+ 60i,11n,94p,898b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_afusau.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/txsys.pfb>
+Output written on /Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.pdf (5 pages, 856741 bytes).
 PDF statistics:
- 192 PDF objects out of 1000 (max. 8388607)
- 155 compressed objects within 2 object streams
- 43 named destinations out of 1000 (max. 500000)
- 44202 words of extra memory for PDF output out of 51595 (max. 10000000)
+ 209 PDF objects out of 1000 (max. 8388607)
+ 174 compressed objects within 2 object streams
+ 48 named destinations out of 1000 (max. 500000)
+ 46789 words of extra memory for PDF output out of 51595 (max. 10000000)
 

@@ -1,18 +1,43 @@
 \section{Introduction}
-As team we had first decided on a different topic "Will I live longer if I cycle to work?" . But in the process of trying to collect data it was seen that there was a lot of scientific studies associated with the topic but we struggled to find a way of meaningfully combining different life expectancy models.  Most of the data we found was already clean and we did not have much processing to do\cite{iacono2008access}. We could not find out any scientific method that directly links the factors we were considering(amount of oxygen intake, pollution,BMI etc)to the increase in life expectancy\cite{edwards2014spinning}.Combining all these factors into one prediction model became a challenge.So ,after spending almost 4 weeks in trying to collect data we had to shift our focus to some other topic where we could get a significantly high volume of data.Now we are trying to predict the top three indicators affecting the currency of that country.After a considerable amount of research We have taken into account the following factors exchange rates,interest rates, employment, population, import,export,GDP and inflation\cite{kuruwitaarachchi2018design}.The annual factors,like the employment, population, trade networks,GDP and inflation are taken in the time range of 1991-2016.
+As team we had first decided on a different topic "Will I live longer if I cycle to work?" . But in the process of trying to collect data it was seen that there was a lot of scientific studies associated with the topic but we struggled to find a way of meaningfully combining different life expectancy models.  Most of the data we found was already clean and we did not have much processing to do\cite{iacono2008access}. We could not find out any scientific method that directly links the factors we were considering(amount of oxygen intake, pollution,BMI etc)to the increase in life expectancy\cite{edwards2014spinning}.Combining all these factors into one prediction model became a challenge.
+\newline
+So ,after spending almost 4 weeks in trying to collect data we had to shift our focus to some other topic where we could get a significantly high volume of data.  Now we are trying to predict the top three indicators affecting the currency of that country.  After a considerable amount of research We have taken into account the following factors exchange rates, interest rates, employment, population, import, export, GDP and inflation\cite{kuruwitaarachchi2018design}.  The annual factors, like the employment, population, trade networks, GDP and inflation are taken in the time range of 1991-2016.
 
 % Head 1
+\section{Problem Statement}
+\subsection{High Frequency Exchange Rate Data}
+Our aim was to investigate how exchange rates influence each other.  As we were able to gather nearly a 1000 samples we where able to perform a number of different machine learning techniques to perform this analysis.
+
+\subsection{Low Frequency Economic Indicators}
+From investigating economic research we were directed towards a number of different economic indicators which are understood to influence a currencies value.  These indicators are only reported on a annual basis and due to a number of factors was only available from 1999 to 2015.  This means we only had 17 samples.  This limited the type of analysis we where able to perform. So we decided to find the economic which where most correlated to the performance of a specific exchange rate. 
+
 \section{Implementation}
-\subsection{Cleaning high frequency data with python} 
-The data that we have collected are from oanda.com,Bank of England and World Bank websites.It contains employment rates,population, GDP, import,export,inflation,interest and currencies of all G20 countries\cite{kuruwitaarachchi2018design}. Considering 16 exchange rates and 9 indicators, we have 144(two are missing) indicator to look up.
+\subsection{High Frequency Exchange Rate Data}
+\subsubsection{}{Cleaning with python}
 \newline
-\includegraphics[width=0.40\textwidth]{aa.png}
-
-\subsubsection{}{First step : Download} 
+The data that we have collected is from oanda.com, Bank of England and World Bank websites. 
 \newline
-For the currency exchange data ,it was about weekly average exchange rates from December 1998 to December 2017. We considered all currency of the G20's countries and downloaded all data considering the GBP as base currency\cite{abbate2018point}. Every file downloaded was made in this way : 
 
-\includegraphics[width=0.40\textwidth]{aaa2.png}
+\iffalse
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.40\textwidth]{aa.png}
+		\caption{our}
+		\label{}
+	\end{center}
+\end{figure}
+\fi
+
+First step, Download : For the currency exchange data, it was about weekly average exchange rates from December 1998 to December 2017. We considered all currency of the G20's countries and downloaded all data considering the GBP as base currency\cite{abbate2018point}. Every file downloaded was made in this way (see Fig\ref{raw_curr}): 
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.40\textwidth]{aaa2.png}
+		\caption{Raw currency data}
+		\label{raw_curr}
+	\end{center}
+\end{figure}
+
 
 For currency exchange data below technique was observed
 \begin{itemize} 
@@ -23,24 +48,33 @@ For currency exchange data below technique was observed
 \item Col[3]= Ask ( Ask is the price a seller is willing to accept for a security) 
 \end{itemize}
 
-We had 16 files(16 because in the G20 group France,Italy,Germany and European Union has currency Euro). Using python we gave in input a file formed by 1240(included blank space between rows) x 4 columns and received the below output 
-
-\includegraphics[width=0.40\textwidth]{aaa1.png}
-
-All spaces were removed using python,saved in one different file, and an average between bid and ask was calculated.
+Second step, Aggregation : We had 16 files(16 because in the G20 group France, Italy, Germany and European Union has currency Euro).  Using python we gave in input a file formed by 1240(included blank space between rows) x 4 columns and received the output below in Fig \ref{part_proccessed}. 
 \newline
-\subsubsection{}{Third step : Creation of a complete matrix }
+
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.40\textwidth]{aaa1.png}
+		\caption{Intermediate Processed Data}
+		\label{part_proccessed}
+	\end{center}
+\end{figure}
+
+All spaces were removed using python,  saved in one different file, and an average between bid and ask was calculated.
 \newline
-We wrote another python script called complete Matrix.py that was used to create all possible currency pair. Remembering that the currency were 16 , we had a output matrix with 16x16 column and 994 rows.
+Third step, Creation of a complete matrix : We wrote another python script called complete Matrix.py that was used to create all possible currency pair. Remembering that the currency were 16 , we had a output matrix with 16x16 column and 994 rows (see Fig\ref{extrap_ex_data}).
 
-\includegraphics[width=0.4\textwidth]{bbb.png}
-\subsection{Model High frequency Data}
+\begin{figure}[!h]
+	\begin{center}
+		\includegraphics[width=0.4\textwidth]{bbb.png}
+		\caption{Extrapolated exchange rate data}
+		\label{extrap_ex_data}
+	\end{center}
+\end{figure}
 
-\subsubsection{}{Purpose}
+\subsubsection{Modeling}
+The target for this assignment was to find, giving in input one currency exchange, the \textbf{three} most relevant currency exchanges that most influences the input. To do that we considered the matrix containing all possible combinations of currency exchanges and we used Matlab for the analysis. We used linear regression technique to create a model to find if there is a clear relationship between one exchange rate and the other G20 exchange rates. We then look to find what are the top 3 currencies that influence a specific exchange rate.
 
-The target for this assignment was to find, giving in input one currency exchange, the \textbf{three} most relevant currency exchanges that most influences the input. To do that we considered the matrix containing all possible combinations of currency exchanges and we used the Matlab. We used linear regression technique to create a model that eventually predicts future values of currency exchange  and the most "relevant variables".
-
-\subsubsection{}{Procedure}
+\subsection{Procedure}
 To find the most relevant exchange rates for the input, it was necessary to write a Matlab script using CVX tool. CVX is a modeling system for constructing and solving disciplined convex programs (DCPs)\cite{leung2000forecasting}. 
 
 \includegraphics[width=0.4\textwidth]{ccc.png}
