@@ -23,6 +23,7 @@
     
     .axis {
         shape-rendering: crispEdges;
+        font-size: 32px;
     }
     
     .axis line {
@@ -73,16 +74,6 @@
         padding: 5;
         margin: 5;
         border: 5;
-    }
-    
-    table,
-    th,
-    td {
-        font-weight: 12px;
-        border: 1px solid black;
-        border-collapse: collapse;
-        padding: 5px;
-        text-align: center;
     }
 </style>
 
@@ -162,8 +153,8 @@
                     var margin = {
                         top: 10,
                         right: 10,
-                        bottom: 10,
-                        left: 10
+                        bottom: 50,
+                        left: 50
                     };
                     var width = Math.floor($(window).width() * 0.8);
                     var height = Math.floor($(window).height() * 0.8);
@@ -236,10 +227,11 @@
                     //Add the x axis
                     svg.append("g")
                         .attr("transform", "translate(0," + height + ")")
+                        .style("font", "18px")
                         .call(d3.axisBottom(x))
                         .append("text")
                         .attr("fill", "#000")
-                        .attr("y", 40)
+                        .attr("y", 80)
                         .attr("x", width / 2)
                         .attr("text-anchor", "middle")
                         .text("Year");
@@ -248,7 +240,7 @@
                         .call(d3.axisLeft(y))
                         .append("text")
                         .attr("fill", "#000")
-                        .attr("y", -40)
+                        .attr("y", -80)
                         .attr("x", -height / 2)
                         .attr("transform", "rotate(-90)")
                         .attr("text-anchor", "middle")
