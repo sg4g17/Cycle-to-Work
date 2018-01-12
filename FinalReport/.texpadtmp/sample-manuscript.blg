@@ -14,45 +14,45 @@ Warning--no journal in iacono2008access
 Warning--no number and no volume in iacono2008access
 Warning--page numbers missing in both pages and numpages fields in iacono2008access
 Warning--page numbers missing in both pages and numpages fields in kuruwitaarachchi2018design
-You've used 9 entries,
+You've used 8 entries,
             5795 wiz_defined-function locations,
-            1373 strings with 17383 characters,
-and the built_in function-call counts, 10686 in all, are:
-= -- 1567
-> -- 343
+            1365 strings with 17249 characters,
+and the built_in function-call counts, 9455 in all, are:
+= -- 1364
+> -- 323
 < -- 0
-+ -- 111
-- -- 116
-* -- 725
-:= -- 1042
-add.period$ -- 46
-call.type$ -- 9
-change.case$ -- 60
-chr.to.int$ -- 9
-cite$ -- 13
-duplicate$ -- 886
-empty$ -- 632
-format.name$ -- 144
-if$ -- 2700
++ -- 106
+- -- 108
+* -- 659
+:= -- 936
+add.period$ -- 41
+call.type$ -- 8
+change.case$ -- 55
+chr.to.int$ -- 8
+cite$ -- 12
+duplicate$ -- 774
+empty$ -- 553
+format.name$ -- 136
+if$ -- 2370
 int.to.chr$ -- 2
 int.to.str$ -- 1
-missing$ -- 32
-newline$ -- 112
-num.names$ -- 72
-pop$ -- 304
+missing$ -- 28
+newline$ -- 104
+num.names$ -- 64
+pop$ -- 271
 preamble$ -- 1
-purify$ -- 140
+purify$ -- 126
 quote$ -- 0
-skip$ -- 292
+skip$ -- 254
 stack$ -- 0
-substring$ -- 812
-swap$ -- 93
+substring$ -- 695
+swap$ -- 78
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 158
+type$ -- 142
 warning$ -- 4
-while$ -- 70
+while$ -- 59
 width$ -- 0
-write$ -- 190
+write$ -- 173
 (There were 4 warnings)
