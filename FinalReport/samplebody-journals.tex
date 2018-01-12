@@ -1,4 +1,4 @@
-﻿\section{Introduction}
+\section{Introduction}
 As team we had first decided on a different topic "Will I live longer if I cycle to work?" . But in the process of trying to collect data it was seen that there was a lot of scientific studies associated with the topic but we struggled to find a way of meaningfully combining different life expectancy models.  Most of the data we found was already clean and we did not have much processing to do\cite{iacono2008access}. We could not find out any scientific method that directly links the factors we were considering(amount of oxygen intake, pollution,BMI etc)to the increase in life expectancy\cite{edwards2014spinning}.Combining all these factors into one prediction model became a challenge.
 \newline
 So ,after spending almost 4 weeks in trying to collect data we had to shift our focus to some other topic where we could get a significantly high volume of data.  Now we are trying to predict the top three indicators affecting the currency of that country.  After a considerable amount of research We have taken into account the following factors exchange rates, interest rates, employment, population, import, export, GDP and inflation\cite{kuruwitaarachchi2018design}.  The annual factors, like the employment, population, trade networks, GDP and inflation are taken in the time range of 1991-2016.
@@ -193,7 +193,7 @@ We created a simple web application using the python flask framework.
 The final analysis and displaying of results was implemented in JavaScript and D3.  
 
 % THIS SECTION BELOW NEEDS SOME MAJOR REWORK, WASN'T ABLE TO UNDERSTAND WHAT THEY DID EXACTLY -- SUMESH
-The when viewing the low frequency economic indicator data we also load the high frequency (weekly samples) exchange rate data, this is then aggregated down to yearly samples for analysis with the economic indicators.
+When viewing the low frequency economic indicator data we also loaded the high frequency (weekly samples) exchange rate data, this is then aggregated down to yearly samples for analysis with the economic indicators.
 \newline
  
 \begin{figure}[!h]
@@ -260,7 +260,10 @@ From the table above, a few things can be concluded
 %IS THIS CONCLUSION DERIVED FROM THE ABOVE TABLE OR SOMEOTHER EXTERNAL SOURCE.?? -- SUMESH
 \begin{itemize}
 \item GDP, Population, Imports and Inflation have been the strongest indicators in the past\cite{edwards2006relationship}. These factors have played the most important role in determining the exchange rates for the two currencies
-\item A high correlation value indicates that the corresponding indicator is the strongest factor in determining the exchange rates between those two countries\cite{burstein2005large}. For example, We find Japanese GDP has a very strong correlation value (0.99) between Japanese Yen and US Dollar and also between Japanese Yen and Saudi Riyal.  This does not necessarily mean there is a strong correlation, to analysis this we must then look at the covariance scatter plot to understand the relationship. In this case we observe a strong correlation. % SO DOES IT MEAN THAT THERE IS A STRONG CORRELATION OR NOT??
+\item A high correlation value indicates that the corresponding indicator is the strongest factor in determining the exchange rates between those two countries\cite{burstein2005large}. For example, We find Japanese GDP has a very strong correlation value (0.99) between Japanese Yen and US Dollar and also between Japanese Yen and Saudi Riyal.  This does not necessarily mean there is a strong correlation, to analysis this we must then look at the covariance scatter plot to understand the relationship and in this case we observe a strong correlation.
+
+% Numzi - can you add results about % error 
+
 \end{itemize}
 \subsection{Analysis}
 \subsubsection{Currency Exchange Trends}
@@ -273,23 +276,24 @@ If we look at the history for the currency of Japan (YEN) we see that, following
 But the question is does it stand good for other cases? Well, yes it does? For instance, if we look at the currency of China(CNY) and USA(USD) we see that both these two countries have a relatively huge GDP values, which does have an impact on their respective currencies. But when we look at the exchange rate which is a copula of both these countries currency. There is a possibility that the influence of the GDP values on the exchange rate tend to be slightly lower (Correlation coefficient of China's GDP and US GDP against the exchange rate of CNY-USD is .92 and .87 respectively) but still have a significant impact the exchange rates. 
 
 \section{Conclusion}
+\subsection{Economic Indicator}
+We have built a tool which allows for the analysis of 254 different exchange rates and there relationship to 9 different economic indicators.  The tool enables you to quickly see for a given exchange rate what are the most correlated economic indicators and the visually validate the nature of that correlation.  It also allows you observe the relationship between the economic indicators them selves.  This can then help guide further investigation into what underlying world events helped drive fluctuations in the exchange rate.
 
-
-
-     
-
-
-
-
-
-
+\subsection{Exchange Rate Interrelationships}
+% Numzi - Make a statement about what you can use the results for, i.e. something similar to what I have added above.
 
 \section{Limitations and future work}
 
 \begin{itemize}
-	\item Our application works on static data .If we want to analyse new data, we need to upload new file into the application.
-	\item Most of the currencies were index linked to USD prior to 1999, for which we had a limited availability of currency data.
-	\item
+	\item Limitation : Our data pipeline is not as automated as we would have liked, there is still a significant amount of manual effort required to update our web application with fresh data.
+	\begin{itemize}
+		\item Improvement : The cleaning we performed was very systematic and with more time could be fully automated in python such that the data is downloaded, clipped and cleaned and exported for use in the web application.  This would allow the exchange data being used to be refreshed on a daily basis.
+	\end{itemize} 
+	\item Limitation : The world exchange rates market is very complex and its structure has fluctuated over time. Some of the currencies were index linked to USD prior to 1999, for which we had a limited availability of currency data.  We need to be clear as to the purpose of our tool, our primary aim was to help people understand the relationship between exchange rates and economic indicators and so this is why we deliberately limited or time range so that the user is able to focus on these relationships alone.
+	\item Limitation : The dashboard we have created is very limited only focusing on covariance of economic indicators and relative relationships between exchange rates.  This is useful as a tool to help direct further investigation however there is a lot more we could show to support this investigation.
+	\begin{itemize}
+		\item 
+	\end{itemize}
 \end{itemize}
 
 
