@@ -295,21 +295,16 @@ We have built a tool which allows for the analysis of 254 different exchange rat
 \begin{itemize}
 	\item Limitation : Our data pipeline is not as automated as we would have liked, there is still a significant amount of manual effort required to update our web application with fresh data.
 	\begin{itemize}
-		\item Improvement : The cleaning we performed was very systematic and with more time could be fully automated in python such that the data is downloaded, clipped and cleaned and exported for use in the web application.  This would allow the exchange data being used to be refreshed on a daily basis.
+		\item Improvement : The cleaning we performed was very systematic and with more time could be fully automated in python where the data could be downloaded, clipped and cleaned and finally exported directly the web application.  This would allow the exchange data being used to be refreshed on a daily basis.
 	\end{itemize} 
 	\item Limitation : The world exchange rates market is very complex and its structure has fluctuated over time. Some of the currencies were index linked to USD prior to 1999, for which we had a limited availability of currency data.  We need to be clear as to the purpose of our tool, our primary aim was to help people understand the relationship between exchange rates and economic indicators and so this is why we deliberately limited or time range so that the user is able to focus on these relationships alone.
 	\item Limitation : The dashboard we have created is very limited only focusing on covariance of economic indicators and relative relationships between exchange rates.  This is useful as a tool to help direct further investigation however there is a lot more we could show to support this investigation.
 	\begin{itemize}
 		\item Improvement : we could expand our dashboard to display all the respective trend date for the correlations that were found.
-		\item Improvement : In the exchange rate analysis we could look to automatically find points of inflection in the exchange rate trend data that correlate with the other related exchange rates that were found.  This will identify points in time where something significant might have happened.  Using these time point we could the look to automatically search for financial news related to the countries at this point in time.  This would significantly reduce the effort required to explore the economic history of a specific exchange rate.
+		\item Improvement : In the exchange rate analysis we could look to automatically find points of inflation in the exchange rate trend data that correlate with the other related exchange rates that were found.  This will identify points in time where something significant might have happened.  Using these time point we could then look to automatically search for financial news related to the countries at those specific time periods.  This would significantly reduce the effort required to explore the economic history of a specific exchange rate.
 	\end{itemize}
 	
 \end{itemize}
-
-
-
- 
-
 
 
 % Start of "Sample References" section
