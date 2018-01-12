@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.26)  12 JAN 2018 09:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017) (preloaded format=pdflatex 2017.10.26)  12 JAN 2018 09:59
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -938,33 +938,45 @@ File: Capture.JPG Graphic file (type jpg)
 Package pdftex.def Info: Capture.JPG used on input line 183.
 (pdftex.def)             Requested size: 204.11488pt x 128.91339pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 196--198
+Underfull \hbox (badness 10000) in paragraph at lines 191--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--199
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 191--199
 
  []
 
 <web.jpg, id=141, 1425.325pt x 1166.3575pt>
 File: web.jpg Graphic file (type jpg)
  <use web.jpg>
-Package pdftex.def Info: web.jpg used on input line 201.
+Package pdftex.def Info: web.jpg used on input line 202.
 (pdftex.def)             Requested size: 153.09004pt x 125.2742pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 215--217
+Underfull \hbox (badness 10000) in paragraph at lines 208--210
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 218--220
 
  []
 
 [4.4 <./all_data.png> <./Capture.JPG> <./web.jpg>]
-Overfull \hbox (3.22098pt too wide) in paragraph at lines 262--263
+Overfull \hbox (3.22098pt too wide) in paragraph at lines 265--266
 []\T1/LinuxLibertineT-TLF/m/n/9 (-20) GDP, Pop-u-la-tion, Im-ports and In-fla-tion have been the strongest
  []
 
-
-Underfull \vbox (badness 7851) has occurred while \output is active []
-
- [5.5] (/Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.bbl)) [6.6
+[5.5] (/Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.bbl)) [6.6
 
 ]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 77.
@@ -976,15 +988,15 @@ Package rerunfilecheck Info: File `sample-manuscript.out' has not changed.
 (rerunfilecheck)             Checksum: 5693BAF81FFDEA6F3040387034B71C47;2121.
  ) 
 Here is how much of TeX's memory you used:
- 17988 strings out of 492995
- 272827 string characters out of 6132703
- 385162 words of memory out of 5000000
+ 17985 strings out of 492995
+ 272726 string characters out of 6132703
+ 383162 words of memory out of 5000000
  20735 multiletter control sequences out of 15000+600000
- 142272 words of font info for 266 fonts, out of 8000000 for 9000
+ 141874 words of font info for 264 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
- 60i,11n,94p,906b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 60i,11n,94p,918b,511s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_7grukw.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_oexx6f.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_ki75ao.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_afusau.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_25tcsq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_nh77jq.enc}{/usr/local/texlive/2017/texmf-dist/fonts/enc/dvips/libertine/lbtn_76gpa5.enc}</usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinBiolinumT.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinBiolinumTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineT.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineTB.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineTBI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/libertine/LinLibertineTI.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/txexs.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/local/texlive/2017/texmf-dist/fonts/type1/public/newtx/zxlri.pfb>
-Output written on /Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.pdf (6 pages, 878188 bytes).
+Output written on /Users/jpw/projects/Cycle-to-work/FinalReport/.texpadtmp/sample-manuscript.pdf (6 pages, 878782 bytes).
 PDF statistics:
  230 PDF objects out of 1000 (max. 8388607)
  189 compressed objects within 2 object streams

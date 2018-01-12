@@ -187,12 +187,13 @@ Furthermore, we used replace function to remove the space, which may cause the I
 \end{figure}
 
 \subsection{Web Application Design}
-\subsubsection{}{Framework}
-We created a simple web application using the python flask framework.
-\subsubsection{}{Displaying Result}
-The final analysis and displaying of results was implemented in JavaScript and D3.  
 
-% THIS SECTION BELOW NEEDS SOME MAJOR REWORK, WASN'T ABLE TO UNDERSTAND WHAT THEY DID EXACTLY -- SUMESH
+We created a simple web application using the python flask framework.
+\newline
+\newline
+The final analysis and displaying of results was implemented in JavaScript and D3
+\newline
+\newline
 When viewing the low frequency economic indicator data we also loaded the high frequency (weekly samples) exchange rate data, this is then aggregated down to yearly samples for analysis with the economic indicators.
 \newline
  
@@ -206,9 +207,11 @@ When viewing the low frequency economic indicator data we also loaded the high f
 
 The web app has the following two functions:
 \newline
-1)	Finding Strongest Correlation :When this button is pressed the web app iterates through all the countries currency exchange rates between eachother and calculates the correlation coefficient between the exchange rates and their countries respective economic indicator.  This value is then sorted in order of strength (closest to either 1.0 or -1.0) before being displayed.  This allows us to find what are the strongest and weakest correlations. The app then also aggregates the absolute value of each correlation coefficient (to prevent positive and negative correlations cancelling each other out and allowing us to find the average strength of the correlation) with respect to the type of economic indicator.  Which allows us to find the type of economic indicator which is tightly correlated with the exchange rates.
-\newline
-2)	Go!:This button takes a selected exchange rate and then generates a scatter plot for each of the economic indicators that are most correlated with those exchange rate. Which is then present in a 4 x 4 grid (as seen in Fig \ref{scatter_plot}), the selected exchange rate is in the top right corner, and each economic indicator is plotted on the diagonal, labelled with their respective correlation coefficient related to the exchange rate.  The user is then able to see a covariance scatter plot for each variable by tracing the horizontal and vertical intersection.
+\begin{enumerate}
+\item Finding Strongest Correlation : When this button is pressed the web app iterates through all the countries currency exchange rates between each other and calculates the correlation coefficient between the exchange rates and their countries respective economic indicator.  This value is then sorted in order of strength (closest to either 1.0 or -1.0) before being displayed.  This allows us to find what are the strongest and weakest correlations. The app then also aggregates the absolute value of each correlation coefficient (to prevent positive and negative correlations cancelling each other out and allowing us to find the average strength of the correlation) with respect to the type of economic indicator.  Which allows us to find the type of economic indicator which is tightly correlated with the exchange rates.
+
+\item Go! : This button takes a selected exchange rate and then generates a scatter plot for each of the economic indicators that are most correlated with those exchange rate. Which is then present in a 4 x 4 grid (as seen in Fig \ref{scatter_plot}), the selected exchange rate is in the top right corner, and each economic indicator is plotted on the diagonal, labelled with their respective correlation coefficient related to the exchange rate.  The user is then able to see a covariance scatter plot for each variable by tracing the horizontal and vertical intersection.
+\end{enumerate}
 
 \section{Results}
 \subsection{Observation}
@@ -277,7 +280,7 @@ But the question is does it stand good for other cases? Well, yes it does? For i
 
 \section{Conclusion}
 \subsection{Economic Indicator}
-We have built a tool which allows for the analysis of 254 different exchange rates and there relationship to 9 different economic indicators.  The tool enables you to quickly see for a given exchange rate what are the most correlated economic indicators and the visually validate the nature of that correlation.  It also allows you observe the relationship between the economic indicators them selves.  This can then help guide further investigation into what underlying world events helped drive fluctuations in the exchange rate.
+We have built a tool which allows for the analysis of 254 different exchange rates and their relationship to 9 different economic indicators.  The tool enables you to quickly see for a given exchange rate what are the most correlated economic indicators and visually validate the nature of that correlation.  It also allows you to observe the relationship between the economic indicators them selves.  This can then help guide further investigation into what underlying world events helped drive fluctuations in the exchange rate.
 
 \subsection{Exchange Rate Interrelationships}
 % Numzi - Make a statement about what you can use the results for, i.e. something similar to what I have added above.
@@ -292,8 +295,10 @@ We have built a tool which allows for the analysis of 254 different exchange rat
 	\item Limitation : The world exchange rates market is very complex and its structure has fluctuated over time. Some of the currencies were index linked to USD prior to 1999, for which we had a limited availability of currency data.  We need to be clear as to the purpose of our tool, our primary aim was to help people understand the relationship between exchange rates and economic indicators and so this is why we deliberately limited or time range so that the user is able to focus on these relationships alone.
 	\item Limitation : The dashboard we have created is very limited only focusing on covariance of economic indicators and relative relationships between exchange rates.  This is useful as a tool to help direct further investigation however there is a lot more we could show to support this investigation.
 	\begin{itemize}
-		\item 
+		\item Improvement : we could expand our dashboard to display all the respective trend date for the correlations that were found.
+		\item Improvement : In the exchange rate analysis we could look to automatically find points points of inflection in the exchange rate trend data that correlation with the other related exchange rates that where found.  This will identify points in time where something significant might have happened.  Using these time point we could the look to automatically search for financial news related to the countries at this point in time.  This would significantly reduce the effort required to explore the economic history of a specific exchange rate.
 	\end{itemize}
+	
 \end{itemize}
 
 
